@@ -9,6 +9,7 @@ const StartCourse = ({ params }) => {
     const [course, setCourse] = useState({});
     const [selectedChapterContent, setSelectedChapterContent]=useState({});
     const [selectedChapter, setSelectedChapter]=useState();
+    const includeVideo= (course?.includeVideo=="Yes" ? true : false);
 
     useEffect(() => {
         if (user) {
@@ -69,9 +70,8 @@ const StartCourse = ({ params }) => {
                 </div>
             </div>
 
-            {/* 2 */}
             <div className='md:ml-72'>
-                <ChapterContent chapter={selectedChapter} content={selectedChapterContent} />
+                <ChapterContent chapter={selectedChapter} includeVideo={includeVideo} content={selectedChapterContent} />
             </div>
         </div>
 

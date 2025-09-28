@@ -1,8 +1,12 @@
 import React from 'react'
+import CourseList from '../_components/CourseList'
 
 const exlorePage = () => {
   return (
-    <div>Explore Page</div>
+    <>
+      <h2 className='text-2xl text-black font-bold'>Explore courses from others!</h2>
+      <CourseList />
+    </>
   )
 }
 

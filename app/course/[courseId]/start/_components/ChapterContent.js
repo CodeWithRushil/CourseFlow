@@ -2,7 +2,7 @@ import React from 'react'
 import YouTube from 'react-youtube'
 import ReactMarkdown from 'react-markdown'
 
-const ChapterContent = ({ chapter, content }) => {
+const ChapterContent = ({ chapter, includeVideo, content }) => {
   const opts = {
     height: '300',
     width: '600',
@@ -16,9 +16,9 @@ const ChapterContent = ({ chapter, content }) => {
       <p className='text-gray-500'>{chapter?.about}</p>
 
 
-      <div className='flex justify-center my-6'>
+      {includeVideo && <div className='flex justify-center my-6'>
         <YouTube videoId={content?.videoId} opts={opts} />
-      </div>
+      </div>}
 
       <div>
         {content?.content?.map((item, index) => (
