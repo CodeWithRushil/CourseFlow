@@ -28,7 +28,7 @@ const UserCourseCard = ({ userCourse, refreshCourses }) => {
 
 
           <div className="flex items-center justify-between mt-4 text-sm text-gray-600">
-            <span className="px-2 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-medium">
+            <span className="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium">
               {userCourse.category}
             </span>
             <span className="capitalize">{userCourse.level}</span>

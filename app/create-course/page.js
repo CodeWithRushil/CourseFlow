@@ -13,6 +13,11 @@ import LoadingComplete from './_components/LoadingComplete';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
+import { MdOutlineCategory } from "react-icons/md";
+import { FaRegLightbulb } from "react-icons/fa";
+import { CgOptions } from "react-icons/cg";
+
+
 const CreateCourse = () => {
     const [activeStep, setActiveStep] = useState(0);
     const [isLastStep, setIsLastStep] = useState(false);
@@ -93,16 +98,16 @@ const CreateCourse = () => {
         <div className="flex flex-col min-h-screen bg-gray-50">
             <LogoHeader />
             <main className="flex flex-col items-center px-6 py-10 sm:px-10 m-auto">
-                <div className="w-3xl bg-red-300 rounded-lg shadow-md p-6">
-                    <h1 className="text-3xl text-center font-bold text-blue-600 mb-4">
+                <div className="w-4xl bg-white rounded-lg shadow-lg p-6">
+                    <h1 className="text-3xl text-center font-bold text-blue-600 mb-10">
                         Create Course
                     </h1>
                     {/*Stepper */}
                     <div className="flex items-start max-w-screen-lg mx-auto">
                         <div className="w-full">
                             <div className="flex items-center w-full">
-                                <div className="w-7 h-7 shrink-0 mx-[-1px] flex items-center justify-center rounded-full bg-blue-600 transition-all duration-500 ease-linear">
-                                    <span className="text-sm text-white font-semibold">1</span>
+                                <div className="w-10 h-10 shrink-0 mx-[-1px] flex items-center justify-center rounded-full bg-blue-600 transition-all duration-500 ease-linear">
+                                    <span className="text-lg text-white font-semibold"><MdOutlineCategory/></span>
                                 </div>
                                 <div className={`w-full h-[3px] mx-4 rounded-lg ${activeStep > 0 ? "bg-blue-600" : "bg-gray-300"} transition-all duration-500 ease-linear`}></div>
                             </div>
@@ -112,8 +117,8 @@ const CreateCourse = () => {
                         </div>
                         <div className="w-full">
                             <div className="flex items-center w-full">
-                                <div className={`w-7 h-7 shrink-0 mx-[-1px] ${activeStep > 0 ? "bg-blue-600" : "bg-gray-300"} flex items-center justify-center rounded-full transition-all duration-500 ease-linear`}>
-                                    <span className="text-sm text-white font-semibold transition-all duration-500 ease-linear">2</span>
+                                <div className={`w-10 h-10 shrink-0 mx-[-1px] ${activeStep > 0 ? "bg-blue-600" : "bg-gray-300"} flex items-center justify-center rounded-full transition-all duration-500 ease-linear`}>
+                                    <span className="text-lg text-white font-semibold transition-all duration-500 ease-linear"><FaRegLightbulb/></span>
                                 </div>
                                 <div className={`w-full h-[3px] mx-4 rounded-lg ${activeStep > 1 ? "bg-blue-600" : "bg-gray-300"} transition-all duration-500 ease-linear`}></div>
                             </div>
@@ -124,8 +129,8 @@ const CreateCourse = () => {
                         </div>
                         <div>
                             <div className="flex items-center">
-                                <div className={`w-7 h-7 shrink-0 mx-[-1px] flex items-center justify-center rounded-full ${activeStep > 1 ? "bg-blue-600" : "bg-gray-300"} transition-all duration-500 ease-linear`}>
-                                    <span className={`text-sm text-white font-semibold ${activeStep > 1 ? "text-blue-600" : "text-gray-300"} transition-all duration-500 ease-linear`}>3</span>
+                                <div className={`w-10 h-10 shrink-0 mx-[-1px] flex items-center justify-center rounded-full ${activeStep > 1 ? "bg-blue-600" : "bg-gray-300"} transition-all duration-500 ease-linear`}>
+                                    <span className={`text-lg text-white font-semibold ${activeStep > 1 ? "text-blue-600" : "text-gray-300"} transition-all duration-500 ease-linear`}><CgOptions/></span>
                                 </div>
                             </div>
                             <div className="mt-2">
@@ -140,7 +145,7 @@ const CreateCourse = () => {
                     {activeStep == 2 ? <Options /> : null}
 
                     {/*Next & Previous */}
-                    <div className="mt-32 flex justify-between">
+                    <div className="mt-25 flex justify-between">
                         <Button onClick={handlePrev} disabled={activeStep == 0} className={`cursor-pointer ${activeStep == 0 ? "bg-gray-300 text-black" : "bg-blue-600"}`}>
                             Prev
                         </Button>

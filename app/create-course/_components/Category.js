@@ -1,6 +1,7 @@
 import { UserInputContext } from '@/app/_context/UserInputContext'
 import React, { useContext, useEffect } from 'react'
 import {CategoryList} from '@/app/_shared/CategoryList';
+import Image from 'next/image';
 
 const Category = () => {
   const { userCourseInput, setUserCourseInput } = useContext(UserInputContext);
@@ -24,11 +25,12 @@ const Category = () => {
           <div
             key={item.id}
             onClick={() => handleCategoryChange(item.name)}
-            className={`border border-black cursor-pointer h-35 w-35 text-center flex items-center justify-center rounded-2xl transition-all 
+            className={`border border-black cursor-pointer h-30 w-60 gap-3 text-center flex flex-col items-center justify-center rounded-2xl transition-all 
               ${userCourseInput.category === item.name 
-                ? "bg-blue-600 text-white" 
-                : "bg-blue-300 hover:bg-blue-500 hover:text-white"}`}
-          >
+                ? "bg-blue-200 text-black" 
+                : "bg-gray-50 hover:bg-blue-100 hover:text-black"}`}
+          > 
+            <Image src={item.image} width={50} height={50} alt={item.name} />
             <h2>{item.name}</h2>
           </div>
         ))}

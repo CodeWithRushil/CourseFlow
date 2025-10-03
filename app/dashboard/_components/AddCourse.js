@@ -13,7 +13,7 @@ const AddCourse = () => {
         <p>Create new course with AI.</p>
       </div>
       <Link href='/create-course'>
-        <button className='flex items-center bg-purple-600 text-white h-10 p-3 cursor-pointer rounded'>+ Create AI Course</button>
+        <button className='flex items-center bg-blue-700 text-white h-10 p-3 cursor-pointer rounded'>+ Create AI Course</button>
       </Link>
 
     </div>
