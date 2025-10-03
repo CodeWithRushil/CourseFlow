@@ -8,16 +8,16 @@ export async function POST(req) {
 
     const body = await req.json();
 
-    const allCourses = await courseLayoutModel.find({published: true});
-    if (!allCourses) {
+    const unpublishedCourses = await courseLayoutModel.find({createdBy: body.email, published: false});
+    if (!unpublishedCourses) {
       return NextResponse.json(
-        { success: false, message: "All Courses not found rushil" },
+        { success: false, message: "Unpublished Courses not found rushil" },
         { status: 404 }
       );
     }
-    return NextResponse.json({ success: true, allCourses });
+    return NextResponse.json({ success: true, unpublishedCourses });
   } catch (err) {
-    console.error("❌ Error in getting all courses:", err);
+    console.error("❌ Error in getting unpublished courses:", err);
     return NextResponse.json(
       { success: false, error: err.message },
       { status: 500 }

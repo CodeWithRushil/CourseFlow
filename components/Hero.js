@@ -3,7 +3,7 @@ import React from 'react'
 
 const Hero = () => {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen text-center px-4">
+        <div className="bg-gray-50 flex flex-col items-center justify-center min-h-screen text-center px-4">
             <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-[#02060d]">
                 CourseFlow
             </h1>

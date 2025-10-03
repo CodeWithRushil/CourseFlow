@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { UserInputContext } from '../_context/UserInputContext';
+import Footer from '@/components/Footer';
 
 const layout = ({children}) => {
     const [userCourseInput, setUserCourseInput]=useState([]);
@@ -8,6 +9,7 @@ const layout = ({children}) => {
     <UserInputContext.Provider value={{userCourseInput, setUserCourseInput}}>
     <>
     {children}
+    <Footer/>
     </>
     </UserInputContext.Provider>
   )

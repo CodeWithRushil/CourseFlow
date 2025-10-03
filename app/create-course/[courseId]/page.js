@@ -43,21 +43,24 @@ const CourseLayout = ({ params }) => {
     const generateChapterContent = async () => {
         setLoadingAnimation(true);
         const chapters = course.courseOutput.chapters;
-        const results = [];
         for (let i = 0; i < chapters.length; i++) {
             const chapter = chapters[i];
+            let success = false;
             const PROMPT = " Explain the concept in Detail on Topic without ```json: " + course.name + "," + "Chapter: " + chapter.chapterName + "," +
                 "in JSON Format without ```json with an array of objects having fields: title, explanation, and code (if applicable) without ```json.";
-
-            try {
-                const result = await generateChapterContent_AI(PROMPT);
-                const chapterContent = JSON.parse(result);
-                console.log(`✅ Chapter ${i + 1}:`, chapterContent);
-                const rawVideo = await youtube.getVideos(course.name + ":" + chapter.chapterName);
-                console.log(`✅✅ Video ${i + 1}:`, rawVideo);
-                await SaveChapterInDB(chapter.chapterName, chapterContent, i, rawVideo[0].id.videoId);
-            } catch (err) {
-                console.error(`⚠️ Error on chapter ${i + 1}:`, err);
+            
+            while (!success) {
+                try {
+                    const result = await generateChapterContent_AI(PROMPT);
+                    const chapterContent = JSON.parse(result);
+                    console.log(`✅ Chapter ${i + 1}:`, chapterContent);
+                    const rawVideo = await youtube.getVideos(course.name + ":" + chapter.chapterName);
+                    console.log(`✅✅ Video ${i + 1}:`, rawVideo);
+                    await SaveChapterInDB(chapter.chapterName, chapterContent, i, rawVideo[0].id.videoId);
+                    success = true;
+                } catch (err) {
+                    console.error(`⚠️ Error on chapter ${i + 1}:`, err);
+                }
             }
         };
         try {
