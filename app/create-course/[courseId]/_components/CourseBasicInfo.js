@@ -64,9 +64,9 @@ const CourseBasicInfo = ({ course, refreshData, edit = true }) => {
                         <p className='text-sm text-gray-400 mt-3'>
                             {course.courseOutput.description}
                         </p>
-                        <h1 className='font-bold text-purple-500'>{course.courseOutput.category}</h1>
+                        <h1 className='font-bold text-blue-500'>{course.courseOutput.category}</h1>
                         {!edit && <Link href={"/course/" + course.courseId + "/start"}>
-                            <button type="button" className="w-full focus:outline-none text-white bg-purple-600 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:ring-purple-500 font-semibold cursor-pointer">Start</button>
+                            <button type="button" className="w-full focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-500 font-semibold cursor-pointer">Start</button>
                         </Link>}
 
                     </div>

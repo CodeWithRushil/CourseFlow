@@ -33,7 +33,7 @@ const EditCourseInfo = ({ course, refreshData }) => {
     }
     return (
         <AlertDialog>
-            <AlertDialogTrigger><h3 className='text-purple-700 text-lg cursor-pointer'>Edit</h3></AlertDialogTrigger>
+            <AlertDialogTrigger><h3 className='text-blue-700 text-lg cursor-pointer'>Edit</h3></AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <AlertDialogTitle>Edit Course Title & Description</AlertDialogTitle>
@@ -62,7 +62,7 @@ const EditCourseInfo = ({ course, refreshData }) => {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel className="cursor-pointer">Cancel</AlertDialogCancel>
-                    <AlertDialogAction className="px-6 py-2 bg-purple-600 text-white font-semibold rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition duration-200 cursor-pointer" onClick={onUpdateHandler}>
+                    <AlertDialogAction className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 cursor-pointer" onClick={onUpdateHandler}>
                         Update
                     </AlertDialogAction>
                 </AlertDialogFooter>
