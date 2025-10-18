@@ -38,7 +38,7 @@ const DeleteCourse = ({ course, refreshCourses }) => {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel className="cursor-pointer">Cancel</AlertDialogCancel>
-                    <AlertDialogAction className="px-6 py-2 bg-purple-600 text-white font-semibold rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition duration-200 cursor-pointer" onClick={deleteCourseHandler}>
+                    <AlertDialogAction className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 cursor-pointer" onClick={deleteCourseHandler}>
                         Yes
                     </AlertDialogAction>
                 </AlertDialogFooter>

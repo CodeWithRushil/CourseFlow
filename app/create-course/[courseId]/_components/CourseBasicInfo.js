@@ -4,8 +4,9 @@ import React, { useState } from 'react'
 import EditCourseInfo from './EditCourseInfo';
 import { Client, Storage, ID } from 'appwrite';
 import Link from 'next/link';
+import { MdOutlineCategory } from "react-icons/md";
 
-const CourseBasicInfo = ({ course, refreshData, edit = true }) => {
+const CourseBasicInfo = ({ course, refreshData, edit = true , generateChapterContent}) => {
     console.log("Course received:", course);
     const onFileSelected = async (event) => {
         const client = new Client()
@@ -56,7 +57,8 @@ const CourseBasicInfo = ({ course, refreshData, edit = true }) => {
         <>
             <div className='p-10 rounded-xl border shadow-sm mt-5 gap-10'>
                 <div className='grid grid-cols-3 md:grid-cols-2 gap-10'>
-                    <div>
+                    <div className='flex-col gap-10'>
+                        {/* Fix the above one for vertical gap bw 3 items */}
                         <h2 className='flex font-bold text-2xl gap-2'>
                             {course.courseOutput.courseName}
                             {edit && <EditCourseInfo course={course} refreshData={() => refreshData(true)} />}
@@ -64,9 +66,12 @@ const CourseBasicInfo = ({ course, refreshData, edit = true }) => {
                         <p className='text-sm text-gray-400 mt-3'>
                             {course.courseOutput.description}
                         </p>
-                        <h1 className='font-bold text-blue-500'>{course.courseOutput.category}</h1>
+                        <h1 className='font-bold text-blue-500 flex gap-2 items-center'><MdOutlineCategory className='text-blue-700 text-2xl'/> {course.courseOutput.category}</h1>
                         {!edit && <Link href={"/course/" + course.courseId + "/start"}>
                             <button type="button" className="w-full focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-500 font-semibold cursor-pointer">Start</button>
+                        </Link>}
+                        {edit && <Link href={"/course/" + course.courseId + "/start"}>
+                            <button type="button" className="w-full focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-500 font-semibold cursor-pointer" onClick={generateChapterContent}>Generate Course Content</button>
                         </Link>}
 
                     </div>

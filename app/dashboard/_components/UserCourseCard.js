@@ -6,7 +6,7 @@ import Link from "next/link";
 const UserCourseCard = ({ userCourse, refreshCourses }) => {
   return (
     <Link href={"/course/" + userCourse.courseId}>
-      <div className="cursor-pointer hover:tra bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
+      <div className="cursor-pointer hover:tra border-2 border-blue-100 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
 
         <div className="relative w-full h-48">
           <Image
@@ -34,7 +34,7 @@ const UserCourseCard = ({ userCourse, refreshCourses }) => {
             <span className="capitalize">{userCourse.level}</span>
           </div>
 
-          <DeleteCourse course={userCourse} refreshCourses={refreshCourses} />
+          {/* <DeleteCourse course={userCourse} refreshCourses={refreshCourses} /> */}
         </div>
       </div>
     </Link>

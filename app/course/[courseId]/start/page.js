@@ -57,12 +57,12 @@ const StartCourse = ({ params }) => {
         <div>
             {/* 1 */}
             <div className='fixed md:w-72 hidden md:block h-screen border-r shadow-sm'>
-                <h2 className='font-medium text-lg bg-purple-600 text-white p-4'>{course?.courseOutput?.courseName}</h2>
+                <h2 className='font-medium text-lg bg-blue-600 text-white p-4'>{course?.courseOutput?.courseName}</h2>
 
                 <div>
                     {course?.courseOutput?.chapters.map((chapter, index) => (
-                        <div key={index} className={`cursor-pointer hover:bg-purple-50 
-                        ${selectedChapter?.chapterName==chapter?.chapterName && 'bg-purple-100'}`} onClick={()=>{setSelectedChapter(chapter); getSelectedChapterContent(index);}}>
+                        <div key={index} className={`cursor-pointer hover:bg-blue-50 
+                        ${selectedChapter?.chapterName==chapter?.chapterName && 'bg-blue-100'}`} onClick={()=>{setSelectedChapter(chapter); getSelectedChapterContent(index);}}>
                             <ChapterListCard chapter={chapter} index={index} />
                         </div>
                         

@@ -3,6 +3,7 @@ import CourseBasicInfo from '../_components/CourseBasicInfo';
 import { useUser } from '@clerk/nextjs';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { FaRegCopy } from "react-icons/fa";
 
 const FinishPage = ({ params }) => {
   const { user } = useUser();
@@ -35,7 +36,7 @@ const FinishPage = ({ params }) => {
       <h2 className='font-bold text-center text-2xl'>Congrats! Your course is ready!</h2>
       <CourseBasicInfo course={course} refreshData={() => getCourseLayout()} edit={false} />
       <h2 className='mt-6 font-semibold'>Course URL:</h2>
-      <h2 className='text-center text-gray-400 border p-2 round flex gap-5 items-center'>{process.env.NEXT_PUBLIC_HOST_NAME}/course/{course.courseId} <h2 className='font-bold text-purple-700 cursor-pointer' onClick={async ()=>{ await navigator.clipboard.writeText(process.env.NEXT_PUBLIC_HOST_NAME + "/course/" + course.courseId)}}>Copy &copy;</h2></h2>
+      <h2 className='text-center text-gray-400 border p-2 round flex gap-5 items-center'>{process.env.NEXT_PUBLIC_HOST_NAME}/course/{course.courseId} <h2 className='font-bold text-blue-700 cursor-pointer' onClick={async ()=>{ await navigator.clipboard.writeText(process.env.NEXT_PUBLIC_HOST_NAME + "/course/" + course.courseId)}}><FaRegCopy className='text-xl'/></h2></h2>
     </div>
   )
 }

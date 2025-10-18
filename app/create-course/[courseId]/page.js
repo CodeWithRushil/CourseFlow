@@ -47,7 +47,7 @@ const CourseLayout = ({ params }) => {
             const chapter = chapters[i];
             let success = false;
             const PROMPT = " Explain the concept in Detail on Topic without ```json: " + course.name + "," + "Chapter: " + chapter.chapterName + "," +
-                "in JSON Format without ```json with an array of objects having fields: title, explanation, and code (if applicable) without ```json.";
+                "in JSON Format without ```json with an array of objects having fields: title, explanation, and code (if applicable) without ```json. Keep the keys as title, explanation and code. Keep in mind to keep the keys same to same and case sensitive.";
             
             while (!success) {
                 try {
@@ -110,10 +110,10 @@ const CourseLayout = ({ params }) => {
                 <p>Loading course information...</p>
             ) : course && course.courseOutput ? (
                 <>
-                    <CourseBasicInfo course={course} refreshData={() => getCourseLayout()} />
+                    <CourseBasicInfo course={course} refreshData={() => getCourseLayout()} generateChapterContent={generateChapterContent}/>
                     <CourseDetail course={course} />
                     <Chapters course={course} refreshData={() => getCourseLayout()} />
-                    <button className="mt-5 mb-10 cursor-pointer focus:outline-none text-white bg-purple-600 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:ring-purple-500 font-semibold" onClick={generateChapterContent}>Generate Course Content</button>
+                    <button className="mt-5 mb-10 cursor-pointer focus:outline-none text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-500 font-semibold" onClick={generateChapterContent}>Generate Course Content</button>
                 </>
             ) : (
                 <p>No course data found.</p>

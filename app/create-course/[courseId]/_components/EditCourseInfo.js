@@ -10,6 +10,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { BiSolidEdit } from 'react-icons/bi';
 
 const EditCourseInfo = ({ course, refreshData }) => {
     const [name, setName] = useState(course.courseOutput.courseName);
@@ -33,7 +34,7 @@ const EditCourseInfo = ({ course, refreshData }) => {
     }
     return (
         <AlertDialog>
-            <AlertDialogTrigger><h3 className='text-blue-700 text-lg cursor-pointer'>Edit</h3></AlertDialogTrigger>
+            <AlertDialogTrigger><h3 className='text-blue-700 text-lg cursor-pointer'><BiSolidEdit className='text-blue-700 text-3xl'/></h3></AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <AlertDialogTitle>Edit Course Title & Description</AlertDialogTitle>

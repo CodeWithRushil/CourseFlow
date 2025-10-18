@@ -4,7 +4,8 @@ import CourseList from '../_components/CourseList'
 const exlorePage = () => {
   return (
     <>
-      <h2 className='text-2xl text-black font-bold'>Explore courses from others!</h2>
+      <h2 className='text-2xl text-black font-bold'>Explore Courses</h2>
+      <p className='text-gray-500'>Discover courses from other users</p>
       <CourseList />
     </>
   )

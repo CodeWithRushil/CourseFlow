@@ -4,7 +4,7 @@ import UnpublishedCourseList from '../_components/UnpublishedCourseList'
 const UnpublishedCourses = () => {
   return (
     <>
-      <h2 className='text-2xl text-black font-bold'>Your Unpublished Courses!</h2>
+      <h2 className='text-2xl text-black font-bold'>Your Unpublished Courses</h2>
       <UnpublishedCourseList />
     </>
   )

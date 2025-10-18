@@ -5,7 +5,7 @@ import Link from "next/link";
 const CourseCard = ({ course }) => {
   return (
     <Link href={"/course/" + course.courseId}>
-      <div className="cursor-pointer hover:tra bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
+      <div className="cursor-pointer hover:tra bg-white border-2 border-blue-100 shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
 
         <div className="relative w-full h-48">
           <Image

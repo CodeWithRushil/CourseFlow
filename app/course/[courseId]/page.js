@@ -32,7 +32,7 @@ const ViewCourse = ({ params }) => {
     }
 
     return (
-        <div className='mt-10 px-7 md:px-20 lg:px-44'>
+        <div className='mt-30 px-7 md:px-20 lg:px-44'>
             {!course ? (
                 <p>Loading course information...</p>
             ) : course.courseOutput ? (

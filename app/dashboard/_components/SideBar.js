@@ -35,16 +35,11 @@ const SideBar = () => {
               />
             </svg>
           </button>
-          <a href="https://flowbite.com" className="flex ms-2 md:me-24">
-            {/* <Image
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8 me-3"
-              alt="FlowBite Logo" width={20} height={20}
-            /> */}
+          <Link href="/" className="flex ms-2 md:me-24">
             <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-              Flowbite
+              CourseFlow
             </span>
-          </a>
+          </Link>
         </div>
         <div className="flex items-center">
           <div className="flex items-center ms-3">
@@ -112,7 +107,7 @@ const SideBar = () => {
                 <li>
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-100 dark:hover:text-white"
                     role="menuitem"
                   >
                     Sign out
@@ -136,10 +131,10 @@ const SideBar = () => {
         <li>
           <Link
             href="/dashboard"
-            className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${path=="/dashboard" && "bg-gray-700"}`}
+            className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${path=="/dashboard" && "bg-gray-100"}`}
           >
             <svg
-              className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              className={`w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white ${path=="/dashboard" && "text-gray-900"}`}
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -154,10 +149,10 @@ const SideBar = () => {
         <li>
           <Link
             href="/dashboard/explore"
-            className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${path=="/dashboard/explore" && "bg-gray-700"}`}
+            className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${path=="/dashboard/explore" && "bg-gray-100"}`}
           >
             <svg
-              className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              className={`w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white ${path=="/dashboard/explore" && "text-gray-900"}`}
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -174,10 +169,10 @@ const SideBar = () => {
         <li>
           <Link
             href="/dashboard/unpublished"
-            className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${path=="/dashboard/unpublished" && "bg-gray-100"}`}
           >
             <svg
-              className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              className={`w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white ${path=="/dashboard/unpublished" && "text-gray-900"}`}
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -188,7 +183,7 @@ const SideBar = () => {
             <span className="flex-1 ms-3 whitespace-nowrap">Unpublished</span>  
           </Link>
         </li>
-        <li>
+        {/* <li>
           <a
             href="#"
             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -263,7 +258,7 @@ const SideBar = () => {
             </svg>
             <span className="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
           </a>
-        </li>
+        </li> */}
       </ul>
     </div>
   </aside>

@@ -8,9 +8,9 @@ const AddCourse = () => {
   return (
     <div className='flex items-center justify-between'>
       <div>
-        <h2 className='text-2xl'>Hello, <span className='text-black font-bold '>Insert Username here!</span></h2>
+        <h2 className='text-2xl'>Hello, <span className='text-black font-bold '>{user?.fullName}</span></h2>
         {/* <h2 className='text-2xl'>Hello, <span className='text-black font-bold '>{user.fullName}!</span></h2> */}
-        <p>Create new course with AI.</p>
+        <p className='text-gray-500'>Create a new course with AI</p>
       </div>
       <Link href='/create-course'>
         <button className='flex items-center bg-blue-700 text-white h-10 p-3 cursor-pointer rounded'>+ Create AI Course</button>

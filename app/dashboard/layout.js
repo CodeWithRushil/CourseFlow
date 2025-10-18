@@ -16,7 +16,7 @@ export default function DashboardLayout({ children }) {
       >
       </aside>
       <main
-        className="p-4 overflow-y-auto bg-gray-50 sm:ml-[250px]"
+        className="p-4 overflow-y-auto bg-white sm:ml-[250px]"
         style={{
           marginTop: NAVBAR_HEIGHT,
           height: `calc(100vh - ${NAVBAR_HEIGHT})`,
