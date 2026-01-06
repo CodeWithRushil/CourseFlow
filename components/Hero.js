@@ -1,32 +1,113 @@
-import Link from 'next/link'
-import React from 'react'
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
-    return (
-        <div className="bg-gray-50 flex flex-col items-center justify-center min-h-screen text-center px-4">
-            <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-[#02060d]">
-                CourseFlow
-            </h1>
-            <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-[#02060d]">
-                AI Course Generator
-            </h1>
-            <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-tight  md:text-5xl lg:text-6xl text-[#02060d]">
-                Custom Learning Paths, Powered by AI
-            </h1>
-            <p className="mb-8 text-lg font-normal lg:text-xl sm:px-16 xl:px-48 text-[#02060d]">
-                Course creation, reimagined — build structured, engaging courses in minutes with AI.
-            </p>
-            <Link
-                href="/dashboard"
-                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
-            >
-                Get Started
-                <svg className="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                </svg>
-            </Link>
-        </div>
-    )
-}
+  // Scroll-driven animation for tilted hero image
+  const { scrollY } = useScroll();
 
-export default Hero
+  const rotateX = useTransform(scrollY, [0, 300], [25, 0]);
+  const translateY = useTransform(scrollY, [0, 300], [50, 0]);
+  const scale = useTransform(scrollY, [0, 300], [0.95, 1]);
+
+  return (
+    <section className="relative flex flex-col items-center justify-center min-h-screen bg-[#F8F8F8] text-center px-4 overflow-hidden">
+      {/* === FLOATING CARDS CONTAINER === */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none">
+        {/* LEFT TOP */}
+        <motion.div
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[8%] top-[30%] bg-white/80 backdrop-blur-lg shadow-xl 
+                     rounded-xl p-2 w-25 h-25 flex items-center justify-center rotate-110"
+        >
+          <div className="w-full h-full bg-gray-200 rounded-lg" />
+        </motion.div>
+
+        {/* LEFT BOTTOM */}
+        <motion.div
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[16%] top-[15%] bg-white/80 backdrop-blur-lg shadow-xl 
+                     rounded-xl p-2 w-25 h-25 flex items-center justify-center rotate-70"
+        >
+          <div className="w-full h-full bg-gray-200 rounded-lg" />
+        </motion.div>
+
+        {/* RIGHT TOP */}
+        <motion.div
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute right-[8%] top-[30%] bg-white/80 backdrop-blur-lg shadow-xl 
+                     rounded-xl p-2 w-25 h-25 flex items-center justify-center rotate-110"
+        >
+          <div className="w-full h-full bg-gray-200 rounded-lg" />
+        </motion.div>
+
+        {/* RIGHT BOTTOM */}
+        <motion.div
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute right-[16%] top-[15%] bg-white/80 backdrop-blur-lg shadow-xl 
+                     rounded-xl p-2 w-25 h-25 flex items-center justify-center rotate-70"
+        >
+          <div className="w-full h-full bg-gray-200 rounded-lg" />
+        </motion.div>
+      </div>
+
+      {/* === HERO TEXT === */}
+      <div className="max-w-3xl relative z-10">
+        <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[#02060d] leading-tight">
+          CourseFlow
+        </h1>
+        <h1 className="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-[#02060d] leading-tight">
+          AI Course Generator
+        </h1>
+        <h1 className="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-[#02060d] leading-tight">
+          Custom Learning Paths, Powered by AI
+        </h1>
+
+        <p className="mb-8 text-lg md:text-xl text-gray-700">
+          Create structured, engaging courses in minutes — powered by AI.
+        </p>
+
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center justify-center px-6 py-3 text-white bg-[#155DFC] rounded-lg 
+                     hover:bg-blue-800 transition-all font-semibold shadow-md"
+        >
+          Get Started For Free
+        </Link>
+      </div>
+
+      {/* === SCROLL TRANSFORM IMAGE === */}
+      {/* === SCROLL TRANSFORM IMAGE (FIXED) === */}
+      <motion.div
+        style={{
+          y: translateY,
+          scale,
+        }}
+        className="mt-15 mb-30 w-full max-w-7xl perspective-2000 drop-shadow-2xl drop-shadow-blue-100"
+      >
+        <motion.div
+          style={{
+            rotateX,
+            transformStyle: "preserve-3d",
+          }}
+        >
+          <Image
+            src="/aly.avif"
+            alt="CourseFlow Demo"
+            width={1600}
+            height={1200}
+            className="w-full h-auto drop-shadow-xl rounded-xl"
+          />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default Hero;

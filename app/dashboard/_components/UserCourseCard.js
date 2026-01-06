@@ -1,12 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import DeleteCourse from "./DeleteCourse";
 import Link from "next/link";
 
 const UserCourseCard = ({ userCourse, refreshCourses }) => {
   return (
     <Link href={"/course/" + userCourse.courseId}>
-      <div className="cursor-pointer hover:tra border-2 border-blue-100 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
+      <div className="cursor-pointer hover:tra border-2 border-gray-200 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
 
         <div className="relative w-full h-48">
           <Image
@@ -17,9 +16,8 @@ const UserCourseCard = ({ userCourse, refreshCourses }) => {
           />
         </div>
 
-
         <div className="p-4">
-          <h3 className="font-bold text-lg text-gray-900">
+          <h3 className="font-bold text-lg text-gray-900 line-clamp-1">
             {userCourse.courseOutput?.courseName || userCourse.name}
           </h3>
           <p className="text-gray-500 text-sm mt-2 line-clamp-2">
@@ -34,7 +32,6 @@ const UserCourseCard = ({ userCourse, refreshCourses }) => {
             <span className="capitalize">{userCourse.level}</span>
           </div>
 
-          {/* <DeleteCourse course={userCourse} refreshCourses={refreshCourses} /> */}
         </div>
       </div>
     </Link>

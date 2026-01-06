@@ -5,7 +5,7 @@ import Link from "next/link";
 const CourseCard = ({ course }) => {
   return (
     <Link href={"/course/" + course.courseId}>
-      <div className="cursor-pointer hover:tra bg-white border-2 border-blue-100 shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
+      <div className="cursor-pointer hover:tra bg-white border-2 border-gray-200 shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
 
         <div className="relative w-full h-48">
           <Image
@@ -18,7 +18,7 @@ const CourseCard = ({ course }) => {
 
 
         <div className="p-4">
-          <h3 className="font-bold text-lg text-gray-900">
+          <h3 className="font-bold text-lg text-gray-900 line-clamp-1">
             {course.courseOutput?.courseName || course.name}
           </h3>
           <p className="text-gray-500 text-sm mt-2 line-clamp-2">

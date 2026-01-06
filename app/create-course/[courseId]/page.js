@@ -5,7 +5,7 @@ import CourseBasicInfo from './_components/CourseBasicInfo';
 import CourseDetail from './_components/CourseDetail';
 import Chapters from './_components/Chapters';
 import Loading from '../_components/Loading';
-import { generateChapterContent_AI } from '@/configs/AiModel';
+import { generateChapterContent_AI } from '@/configs/AiModel2';
 import youtube from '@/configs/youtube';
 import { useRouter } from 'next/navigation';
 
@@ -47,7 +47,7 @@ const CourseLayout = ({ params }) => {
             const chapter = chapters[i];
             let success = false;
             const PROMPT = " Explain the concept in Detail on Topic without ```json: " + course.name + "," + "Chapter: " + chapter.chapterName + "," +
-                "in JSON Format without ```json with an array of objects having fields: title, explanation, and code (if applicable) without ```json. Keep the keys as title, explanation and code. Keep in mind to keep the keys same to same and case sensitive.";
+                "in JSON Format without ```json with an array of at least 7 objects having fields: title, explanation, and code without ```json. Return ONLY raw JSON with the following EXACT structure: content named array having objects with fields title, explanation and code. Keep the keys as title, explanation and code. Keep in mind to keep the keys same to same and case sensitive. Return ONLY raw JSON. Do NOT wrap the response in ```json or ``` . Do NOT add explanations, comments, or extra text.";
             
             while (!success) {
                 try {
@@ -56,7 +56,8 @@ const CourseLayout = ({ params }) => {
                     console.log(`✅ Chapter ${i + 1}:`, chapterContent);
                     const rawVideo = await youtube.getVideos(course.name + ":" + chapter.chapterName);
                     console.log(`✅✅ Video ${i + 1}:`, rawVideo);
-                    await SaveChapterInDB(chapter.chapterName, chapterContent, i, rawVideo[0].id.videoId);
+                    // either chapterContent or chapterContent.content based on AI response
+                    await SaveChapterInDB(chapter.chapterName, chapterContent.content, i, rawVideo[0].id.videoId);
                     success = true;
                 } catch (err) {
                     console.error(`⚠️ Error on chapter ${i + 1}:`, err);

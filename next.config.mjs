@@ -1,8 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ['fra.cloud.appwrite.io', 'img.clerk.com', 'readymadeui.com'],
-    },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fra.cloud.appwrite.io",
+      },
+      {
+        protocol: "https",
+        hostname: "img.clerk.com",
+      },
+      {
+        protocol: "https",
+        hostname: "readymadeui.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

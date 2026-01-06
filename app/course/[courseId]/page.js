@@ -4,6 +4,7 @@ import CourseBasicInfo from '@/app/create-course/[courseId]/_components/CourseBa
 import CourseDetail from '@/app/create-course/[courseId]/_components/CourseDetail'
 import React, { useEffect, useState } from 'react'
 import { useUser } from '@clerk/nextjs';
+import ProfileHeader from '@/components/ProfileHeader'
 
 const ViewCourse = ({ params }) => {
     const { user } = useUser();
@@ -37,6 +38,7 @@ const ViewCourse = ({ params }) => {
                 <p>Loading course information...</p>
             ) : course.courseOutput ? (
                 <>
+                    <ProfileHeader />
                     <CourseBasicInfo course={course} refreshData={() => getCourseLayout()} edit={false} />
                     <CourseDetail course={course} />
                     <Chapters course={course} refreshData={() => getCourseLayout()} edit={false} />

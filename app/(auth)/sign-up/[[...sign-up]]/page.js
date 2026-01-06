@@ -1,30 +1,44 @@
-import { SignUp } from '@clerk/nextjs'
-import Image from 'next/image'
+"use client";
+
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { SignUp } from "@clerk/nextjs";
 
 export default function Page() {
   return (
     <>
-      <div className="text-center">
-        <div className="mt-5">
-          <h3 className="text-gray-800 text-xl font-bold sm:text-xl">Create your account</h3>
-        </div>
+      {/* Sign Up Page */}
+      <Header text="Login" link="sign-in" />
+      <div className="min-h-screen bg-[#F8F8F8] text-[#02060D]">
+        <main className="min-h-screen flex items-center justify-center px-4 pt-20">
+          <SignUp
+            appearance={{
+              elements: {
+                card: "border border-gray-200 rounded-xl !shadow-none",
+                cardBox: "!shadow-sm !border !border-gray-200",
+                rootBox: "w-full max-w-md",
+                header: "pb-4",
+                headerTitle: "text-lg font-semibold",
+                headerSubtitle: "text-gray-500 text-sm",
+                form: "gap-4",
+                formButtonPrimary:
+                  "bg-blue-600 hover:bg-blue-700 text-sm font-medium",
+                socialButtonsBlockButton:
+                  "border border-gray-200 hover:bg-gray-100",
+                footerActionText: "text-sm",
+              },
+              variables: {
+                spacingUnit: "0.70rem",
+                borderRadius: "0.35rem",
+              },
+              layout: {
+                socialButtonsPlacement: "bottom",
+              },
+            }}
+          />
+        </main>
       </div>
-      <div className="min-h-screen flex fle-col items-center justify-center">
-        <div className="py-2 px-4">
-          <div className="grid lg:grid-cols-2 items-center gap-6 max-w-6xl w-full">
-            <div className="border border-slate-300 rounded-lg max-w-md shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] max-lg:mx-auto">
-              <SignUp />
-            </div>
-            <div className="max-lg:mt-8">
-              {/* <Image
-                src="https://readymadeui.com/login-image.webp"
-                className="w-full aspect-[71/50] max-lg:w-4/5 mx-auto block object-cover"
-                alt="login img" width={300} height={300}
-              /> */}
-            </div>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </>
-  )
+  );
 }

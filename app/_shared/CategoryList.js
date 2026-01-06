@@ -14,4 +14,9 @@ export const CategoryList = [
     name: 'Creative',
     image: "/creative.png"
   },
+  {
+    id: 4,
+    name: 'Business',
+    image: "/creative.png"
+  }
 ];

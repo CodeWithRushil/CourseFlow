@@ -6,7 +6,7 @@ import React from 'react'
 const LandingPage = () => {
   return (
     <>
-    <Header/>
+    <Header text="Get Started" link="dashboard"/>
     <Hero/>
     <Footer/>
     </>
