@@ -39,7 +39,7 @@ const CourseList = () => {
             />
           ))
         : [1, 2, 3, 4, 5, 6].map((index) => (
-            <div className="border-2 border-blue-100 bg-white rounded-xl overflow-hidden animate-pulse">
+            <div key={index} className="border-2 border-blue-100 bg-white rounded-xl overflow-hidden animate-pulse">
               {/* Image skeleton */}
               <div className="w-full h-48 bg-slate-200" />
 
