@@ -1,8 +1,8 @@
 export const CategoryList = [
   {
     id: 1,
-    name: 'Programming',
-    image: "/programming.png"
+    name: 'Coding',
+    image: "/coding.png"
   },
   {
     id: 2,
@@ -17,6 +17,6 @@ export const CategoryList = [
   {
     id: 4,
     name: 'Business',
-    image: "/creative.png"
+    image: "/business.png"
   }
 ];

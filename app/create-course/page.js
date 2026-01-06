@@ -217,12 +217,12 @@ const CreateCourse = () => {
             {activeStep === 2 && <Options />}
           </div>
 
-          {/* Next & Previous - Added gap-4 for mobile spacing */}
-          <div className="mt-16 sm:mt-24 flex justify-between gap-4">
+          {/* Next & Previous */}
+          <div className="mt-16 sm:mt-24 flex flex-col sm:flex-row justify-between gap-4">
             <Button
               onClick={handlePrev}
               disabled={activeStep === 0}
-              className={`cursor-pointer px-6 py-2 rounded-md transition-all ${
+              className={`text-md font-medium cursor-pointer px-6 py-2 rounded-md transition-all ${
                 activeStep === 0
                   ? "bg-gray-300 text-black"
                   : "bg-[#155DFC] text-white"
@@ -235,7 +235,7 @@ const CreateCourse = () => {
               <Button
                 onClick={handleNext}
                 disabled={checkStatus()}
-                className="cursor-pointer px-6 py-2 bg-[#155DFC] text-white rounded-md disabled:cursor-not-allowed disabled:opacity-50"
+                className="text-md font-medium cursor-pointer px-6 py-2 bg-[#155DFC] text-white rounded-md disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Next
               </Button>
@@ -243,7 +243,7 @@ const CreateCourse = () => {
               <Button
                 onClick={generateCourseLayout}
                 disabled={checkStatus()}
-                className="cursor-pointer px-6 py-2 bg-[#155DFC] text-white rounded-md disabled:opacity-50"
+                className="text-md font-medium cursor-pointer px-6 py-2 bg-[#155DFC] text-white rounded-md disabled:opacity-50"
               >
                 Generate Course
               </Button>
