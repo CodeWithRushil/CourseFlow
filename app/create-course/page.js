@@ -109,7 +109,7 @@ const CreateCourse = () => {
     }
     setLoading(false);
     // setLoadingComplete(true);
-    // router.replace('/visit-course/' + id);
+    router.replace("/create-course/" + id);
   };
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
