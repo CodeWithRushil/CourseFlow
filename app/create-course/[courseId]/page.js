@@ -8,6 +8,7 @@ import Loading from '../_components/Loading';
 import { generateChapterContent_AI } from '@/configs/AiModel2';
 import youtube from '@/configs/youtube';
 import { useRouter } from 'next/navigation';
+import ProfileHeader from '@/components/ProfileHeader';
 
 const CourseLayout = ({ params }) => {
     const { user } = useUser();
@@ -105,7 +106,9 @@ const CourseLayout = ({ params }) => {
         // router.replace('/visit-course/' + id);
     }
     return (
-        <div className='mt-10 px-7 md:px-20 lg:px-44'>
+        <>
+        <ProfileHeader />
+        <div className='mt-24 px-7 md:px-20 lg:px-44'>
             <h2 className='font-bold text-center text-2xl'>Course Layout</h2>
             {loading ? (
                 <p>Loading course information...</p>
@@ -114,13 +117,14 @@ const CourseLayout = ({ params }) => {
                     <CourseBasicInfo course={course} refreshData={() => getCourseLayout()} generateChapterContent={generateChapterContent}/>
                     <CourseDetail course={course} />
                     <Chapters course={course} refreshData={() => getCourseLayout()} />
-                    <button className="mt-5 mb-10 cursor-pointer focus:outline-none text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-500 font-semibold" onClick={generateChapterContent}>Generate Course Content</button>
+                    <button className="mt-5 mb-10 cursor-pointer focus:outline-none text-white bg-[#155DFC] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-500 font-semibold" onClick={generateChapterContent}>Generate Course Content</button>
                 </>
             ) : (
                 <p>No course data found.</p>
             )}
             <Loading loading={loadingAnimation} />
         </div>
+        </>
     )
 }
 

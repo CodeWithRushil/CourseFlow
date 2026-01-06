@@ -37,6 +37,7 @@ const UnpublishedCourseList = () => {
               key={index}
               userCourse={unpublishedCourse}
               refreshCourses={getUnpublishedCourses}
+              unpublished={true}
             />
           ))
         : [1, 2, 3, 4, 5, 6].map((index) => (

@@ -2,11 +2,20 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const UserCourseCard = ({ userCourse, refreshCourses }) => {
+const UserCourseCard = ({
+  userCourse,
+  refreshCourses,
+  unpublished = false,
+}) => {
   return (
-    <Link href={"/course/" + userCourse.courseId}>
+    <Link
+      href={
+        unpublished
+          ? "/create-course/" + userCourse.courseId
+          : "/course/" + userCourse.courseId
+      }
+    >
       <div className="cursor-pointer hover:tra border-2 border-gray-200 bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 transform transition-transform duration-300 hover:scale-102">
-
         <div className="relative w-full h-48">
           <Image
             src={userCourse.courseBanner || "/placeholder.jpg"}
@@ -21,9 +30,9 @@ const UserCourseCard = ({ userCourse, refreshCourses }) => {
             {userCourse.courseOutput?.courseName || userCourse.name}
           </h3>
           <p className="text-gray-500 text-sm mt-2 line-clamp-2">
-            {userCourse.courseOutput?.description || "No description available."}
+            {userCourse.courseOutput?.description ||
+              "No description available."}
           </p>
-
 
           <div className="flex items-center justify-between mt-4 text-sm text-gray-600">
             <span className="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium">
@@ -31,7 +40,6 @@ const UserCourseCard = ({ userCourse, refreshCourses }) => {
             </span>
             <span className="capitalize">{userCourse.level}</span>
           </div>
-
         </div>
       </div>
     </Link>
