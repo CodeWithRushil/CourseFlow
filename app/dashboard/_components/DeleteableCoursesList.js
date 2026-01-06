@@ -39,7 +39,7 @@ const DeletableCourseList = () => {
             />
           ))
         : [1, 2, 3, 4, 5, 6].map((index) => (
-            <div key={index} className="border-2 border-gray-200 bg-white rounded-xl overflow-hidden animate-pulse">
+            <div key={index} className="border-2 border-red-100 bg-white rounded-xl overflow-hidden animate-pulse">
               {/* Banner skeleton */}
               <div className="w-full h-48 bg-slate-200" />
 
