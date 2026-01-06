@@ -252,7 +252,6 @@ const CreateCourse = () => {
       </main>
 
       <Loading loading={loading} />
-      <LoadingComplete loadingComplete={loadingComplete} id={ID} />
     </div>
   );
 };
