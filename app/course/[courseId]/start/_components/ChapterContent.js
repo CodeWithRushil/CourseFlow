@@ -10,9 +10,16 @@ const ChapterContent = ({ chapter, includeVideo, content }) => {
       autoplay: 0,
     },
   };
+  const [copiedIndex, setCopiedIndex] = React.useState(null);
+
+  const handleCopy = async (code, index) => {
+    await navigator.clipboard.writeText(code);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
 
   return (
-    <div className="px-4 sm:px-6 md:px-10 py-8 max-w-6xl mx-auto">
+    <div className="px-4 sm:px-6 md:px-10 py-8 max-w-8xl mx-auto">
       {/* Chapter Title */}
       <h2 className="font-bold text-2xl sm:text-3xl text-gray-900 mb-2 text-center sm:text-left">
         {chapter?.chapterName}
@@ -55,42 +62,27 @@ const ChapterContent = ({ chapter, includeVideo, content }) => {
             <ReactMarkdown>{item?.explanation}</ReactMarkdown>
 
             {/* 💻 Improved Code Block */}
-            {item?.code &&
-              (() => {
-                const [copied, setCopied] = React.useState(false);
+            {item?.code && (
+              <div className="mt-6 rounded-lg overflow-hidden border border-slate-700">
+                {/* Header */}
+                <div className="flex items-center justify-between bg-slate-800 px-4 py-2">
+                  <span className="text-xs text-slate-300 font-mono">Code</span>
 
-                const handleCopy = async () => {
-                  await navigator.clipboard.writeText(item.code);
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 3000);
-                };
-
-                return (
-                  <div className="mt-6 rounded-lg overflow-hidden border border-slate-700">
-                    {/* Header */}
-                    <div className="flex items-center justify-between bg-slate-800 px-4 py-2">
-                      <span className="text-xs text-slate-300 font-mono">
-                        Code
-                      </span>
-
-                      <button
-                        onClick={handleCopy}
-                        className="cursor-pointer text-xs font-medium px-2 py-1 rounded
+                  <button
+                    onClick={() => handleCopy(item.code, index)}
+                    className="cursor-pointer text-xs font-medium px-2 py-1 rounded
             bg-slate-700 text-slate-200 hover:bg-slate-600 transition"
-                      >
-                        {copied ? "✓ Copied" : "Copy"}
-                      </button>
-                    </div>
+                  >
+                    {copiedIndex === index ? "✓ Copied" : "Copy"}
+                  </button>
+                </div>
 
-                    {/* Code */}
-                    <pre className="bg-slate-900 text-slate-100 p-4 overflow-x-auto text-sm sm:text-base leading-relaxed">
-                      <code className="font-mono whitespace-pre">
-                        {item.code}
-                      </code>
-                    </pre>
-                  </div>
-                );
-              })()}
+                {/* Code */}
+                <pre className="bg-slate-900 text-slate-100 p-4 overflow-x-auto text-sm sm:text-base leading-relaxed">
+                  <code className="font-mono whitespace-pre">{item.code}</code>
+                </pre>
+              </div>
+            )}
           </div>
         ))}
       </div>
