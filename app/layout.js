@@ -6,8 +6,8 @@ export const metadata = {
   title: "CourseFlow",
   description: "Made by Rushil Sharma",
   icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 
