@@ -9,6 +9,7 @@ import { generateChapterContent_AI } from "@/configs/AiModel2";
 import youtube from "@/configs/youtube";
 import { useRouter } from "next/navigation";
 import ProfileHeader from "@/components/ProfileHeader";
+import MainLoader from "@/components/MainLoader";
 
 const CourseLayout = ({ params }) => {
   const { user } = useUser();
