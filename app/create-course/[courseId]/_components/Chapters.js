@@ -43,7 +43,7 @@ const Chapters = ({ course, refreshData, edit = true }) => {
             <p className="text-gray-600 text-sm md:text-base">{item.about}</p>
 
             <div className="font-semibold text-[#155DFC] flex gap-1 items-center text-sm">
-              <LuClock4 className="text-[#155DFC] text-lg" />
+              <LuClock4 className="text-[#155DFC] text-base" />
               {item.duration}
             </div>
           </div>

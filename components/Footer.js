@@ -11,8 +11,8 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <Link href="/" className="flex items-center">
               <Image
-                src="./cf_logo4.svg"
-                alt="Flowbite Logo"
+                src="./logo.svg"
+                alt="CourseFlow Logo"
                 className="h-8 me-2"
                 width={30}
                 height={30}

@@ -45,8 +45,8 @@ const Topic = () => {
         sm:text-base
         text-gray-900
         focus:ring-2
-        focus:ring-blue-500
-        focus:border-blue-500
+        focus:ring-[#155DFC]
+        focus:border-[#155DFC]
         transition
       "
         />
@@ -80,8 +80,8 @@ const Topic = () => {
         sm:text-base
         text-gray-900
         focus:ring-2
-        focus:ring-blue-500
-        focus:border-blue-500
+        focus:ring-[#155DFC]
+        focus:border-[#155DFC]
         transition
         resize-none
       "

@@ -125,86 +125,110 @@ const CreateCourse = () => {
           2. Adjusted padding for mobile (p-6) vs desktop (p-10).
         */}
         <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 sm:p-10">
-          <h1 className="text-2xl sm:text-3xl text-center font-bold text-[#155DFC] mb-10">
+          <h1 className="text-2xl sm:text-3xl text-center font-semibold text-[#155DFC] mb-10">
             Create Course
           </h1>
 
-          {/* Stepper - Structure untouched as requested */}
-          <div className="flex items-start max-w-screen-lg mx-auto">
+          {/* Stepper - Max-w increased to make lines longer */}
+          <div className="flex items-start justify-center w-full max-w-4xl mx-auto px-2">
             {/* Step 1 */}
-            <div className="w-full">
+            <div className="flex-1 flex flex-col items-center">
               <div className="flex items-center w-full">
-                <div className="w-10 h-10 shrink-0 mx-[-1px] flex items-center justify-center rounded-full bg-[#155DFC] transition-all duration-500 ease-linear">
+                {/* Spacer to keep icon centered */}
+                <div className="flex-1 h-[3px] invisible"></div>
+
+                <div className="w-10 h-10 shrink-0 flex items-center justify-center rounded-full bg-[#155DFC] transition-all duration-500 ease-linear shadow-md z-10">
                   <span className="text-lg text-white font-semibold">
                     <MdOutlineCategory />
                   </span>
                 </div>
+
+                {/* Connecting Line 1 */}
                 <div
-                  className={`w-full h-[3px] mx-4 rounded-lg ${
+                  className={`flex-1 h-[3px] -mx-[1px] ${
                     activeStep > 0 ? "bg-[#155DFC]" : "bg-gray-300"
                   } transition-all duration-500 ease-linear`}
                 ></div>
               </div>
-              <div className="mt-2 mr-4">
-                <h6 className="text-sm font-semibold text-[#155DFC] transition-all duration-500 ease-linear">
+              <div className="mt-3 text-center">
+                <h6 className="text-xs sm:text-sm font-semibold text-[#155DFC]">
                   Category
                 </h6>
-                <p className="text-xs text-gray-500"> Step 1</p>
+                <p className="text-[10px] sm:text-xs text-gray-500">Step 1</p>
               </div>
             </div>
 
             {/* Step 2 */}
-            <div className="w-full">
+            <div className="flex-1 flex flex-col items-center">
               <div className="flex items-center w-full">
+                {/* Connecting Line 1 (Left Side) */}
                 <div
-                  className={`w-10 h-10 shrink-0 mx-[-1px] ${
+                  className={`flex-1 h-[3px] -mx-[1px] ${
                     activeStep > 0 ? "bg-[#155DFC]" : "bg-gray-300"
-                  } flex items-center justify-center rounded-full transition-all duration-500 ease-linear`}
+                  } transition-all duration-500 ease-linear`}
+                ></div>
+
+                <div
+                  className={`w-10 h-10 shrink-0 z-10 ${
+                    activeStep > 0 ? "bg-[#155DFC]" : "bg-gray-300"
+                  } flex items-center justify-center rounded-full transition-all duration-500 ease-linear shadow-md`}
                 >
-                  <span className="text-lg text-white font-semibold transition-all duration-500 ease-linear">
+                  <span className="text-lg text-white font-semibold">
                     <FaRegLightbulb />
                   </span>
                 </div>
+
+                {/* Connecting Line 2 (Right Side) */}
                 <div
-                  className={`w-full h-[3px] mx-4 rounded-lg ${
+                  className={`flex-1 h-[3px] -mx-[1px] ${
                     activeStep > 1 ? "bg-[#155DFC]" : "bg-gray-300"
                   } transition-all duration-500 ease-linear`}
                 ></div>
               </div>
-              <div className="mt-2 mr-4">
+              <div className="mt-3 text-center">
                 <h6
-                  className={`text-sm font-semibold ${
+                  className={`text-xs sm:text-sm font-semibold ${
                     activeStep > 0 ? "text-[#155DFC]" : "text-gray-300"
-                  } transition-all duration-500 ease-linear`}
+                  }`}
                 >
                   Topic
                 </h6>
-                <p className="text-xs text-gray-500">Step 2</p>
+                <p className="text-[10px] sm:text-xs text-gray-500">Step 2</p>
               </div>
             </div>
 
             {/* Step 3 */}
-            <div>
-              <div className="flex items-center">
+            <div className="flex-1 flex flex-col items-center">
+              <div className="flex items-center w-full">
+                {/* Connecting Line 2 */}
                 <div
-                  className={`w-10 h-10 shrink-0 mx-[-1px] flex items-center justify-center rounded-full ${
+                  className={`flex-1 h-[3px] -mx-[1px] ${
                     activeStep > 1 ? "bg-[#155DFC]" : "bg-gray-300"
                   } transition-all duration-500 ease-linear`}
+                ></div>
+
+                <div
+                  className={`w-10 h-10 shrink-0 z-10 flex items-center justify-center rounded-full ${
+                    activeStep > 1 ? "bg-[#155DFC]" : "bg-gray-300"
+                  } transition-all duration-500 ease-linear shadow-md`}
                 >
-                  <span className="text-lg text-white font-semibold transition-all duration-500 ease-linear">
+                  <span className="text-lg text-white font-semibold">
                     <CgOptions />
                   </span>
                 </div>
+
+                {/* Spacer to keep icon centered */}
+                <div className="flex-1 h-[3px] invisible"></div>
               </div>
-              <div className="mt-2">
+              <div className="mt-3 text-center">
                 <h6
-                  className={`text-sm font-semibold ${
+                  className={`text-xs sm:text-sm font-semibold ${
                     activeStep > 1 ? "text-[#155DFC]" : "text-gray-300"
-                  } transition-all duration-500 ease-linear`}
+                  }`}
                 >
                   Options
                 </h6>
-                <p className="text-xs text-gray-500">Step 3</p>
+                <p className="text-[10px] sm:text-xs text-gray-500">Step 3</p>
               </div>
             </div>
           </div>
@@ -221,11 +245,14 @@ const CreateCourse = () => {
             <Button
               onClick={handlePrev}
               disabled={activeStep === 0}
-              className={`text-md font-medium cursor-pointer px-6 py-2 rounded-md transition-all ${
-                activeStep === 0
-                  ? "bg-gray-300 text-black"
-                  : "bg-[#155DFC] text-white"
-              }`}
+              variant="outline"
+              className={`normal-case text-sm font-medium px-4 py-1.5 rounded-md transition-all 
+      ${
+        activeStep === 0
+          ? "bg-gray-200 text-gray-500 cursor-not-allowed border-gray-200"
+          : "bg-white text-[#155DFC] border-2 cursor-pointer border-[#155DFC] hover:bg-blue-50 active:bg-blue-100"
+      } 
+      sm:order-1 order-2`}
             >
               Back
             </Button>
@@ -234,7 +261,9 @@ const CreateCourse = () => {
               <Button
                 onClick={handleNext}
                 disabled={checkStatus()}
-                className="text-md font-medium cursor-pointer px-6 py-2 bg-[#155DFC] text-white rounded-md disabled:cursor-not-allowed disabled:opacity-50"
+                className="normal-case cursor-pointer text-sm font-medium px-4 py-1.75 bg-[#155DFC] text-white rounded-md 
+        hover:bg-blue-700 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed 
+        sm:order-2 order-1"
               >
                 Next
               </Button>
@@ -242,7 +271,9 @@ const CreateCourse = () => {
               <Button
                 onClick={generateCourseLayout}
                 disabled={checkStatus()}
-                className="text-md font-medium cursor-pointer px-6 py-2 bg-[#155DFC] text-white rounded-md disabled:opacity-50"
+                className="normal-case cursor-pointer text-sm font-medium px-4 py-1.75 bg-[#155DFC] text-white rounded-md 
+        hover:bg-blue-700 active:scale-95 disabled:opacity-50 
+        sm:order-2 order-1"
               >
                 Generate Course
               </Button>

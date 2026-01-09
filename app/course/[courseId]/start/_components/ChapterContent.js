@@ -66,12 +66,16 @@ const ChapterContent = ({ chapter, includeVideo, content }) => {
               <div className="mt-6 rounded-lg overflow-hidden border border-slate-700">
                 {/* Header */}
                 <div className="flex items-center justify-between bg-slate-800 px-4 py-2">
-                  <span className="text-xs text-slate-300 font-mono">Code</span>
+                  <div class="flex space-x-2 text-red-500">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                  </div>
 
                   <button
                     onClick={() => handleCopy(item.code, index)}
                     className="cursor-pointer text-xs font-medium px-2 py-1 rounded
-            bg-slate-700 text-slate-200 hover:bg-slate-600 transition"
+            bg-slate-700 text-slate-100 hover:bg-slate-600 transition"
                   >
                     {copiedIndex === index ? "✓ Copied" : "Copy"}
                   </button>

@@ -10,8 +10,8 @@ const Header = ({ text, link }) => {
           className="flex items-center space-x-2 rtl:space-x-reverse"
         >
           <Image
-            src="./cf_logo4.svg"
-            alt="Flowbite Logo"
+            src="./logo.svg"
+            alt="CourseFlow Logo"
             width={30}
             height={30}
           />
