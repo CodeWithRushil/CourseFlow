@@ -282,7 +282,7 @@ const CreateCourse = () => {
         </div>
       </main>
 
-      <Loading loading={loading} />
+      <Loading loading={loading} mode="layout" />
     </div>
   );
 };

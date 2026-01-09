@@ -35,7 +35,7 @@ const AddCourse = () => {
         <button
           className="w-full sm:w-auto flex items-center justify-center gap-2
                bg-[#155DFC] text-white h-10 px-4 rounded-lg
-               hover:bg-blue-800 transition cursor-pointer"
+               hover:bg-blue-700 transition cursor-pointer"
         >
           <HiSparkles className="text-lg" />
           Create AI Course

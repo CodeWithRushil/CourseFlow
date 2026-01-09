@@ -37,9 +37,12 @@ const FinishPage = ({ params }) => {
       <ProfileHeader />
       <div className="mt-24 px-7 md:px-20 lg:px-44">
         <h2 className="font-bold text-center text-2xl">
-          Congrats! <br />
+          Congrats!
+          <br className="block md:hidden" />
+          <span className="hidden md:inline"> </span>
           Your course is ready
         </h2>
+
         <CourseBasicInfo
           course={course}
           refreshData={() => getCourseLayout()}
