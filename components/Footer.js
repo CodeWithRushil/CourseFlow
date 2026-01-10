@@ -27,7 +27,9 @@ const Footer = () => {
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-xl font-semibold text-[#02060d]">About</h2>
+              <h2 className="mb-6 text-xl font-semibold text-[#02060d]">
+                About
+              </h2>
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
                   <Link href="/why-linkedink">Why CourseFlow</Link>
@@ -58,13 +60,15 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-xl font-semibold text-[#02060d]">Legal</h2>
+              <h2 className="mb-6 text-xl font-semibold text-[#02060d]">
+                Legal
+              </h2>
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
                   <Link href="/privacy-policy">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link href="/terms">Terms &amp; Conditions</Link>
+                  <Link href="/terms">Terms</Link>
                 </li>
               </ul>
             </div>
