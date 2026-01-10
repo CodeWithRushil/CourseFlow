@@ -9,7 +9,7 @@ export default function Page() {
     <>
       {/* Sign Up Page */}
       <Header text="Login" link="sign-in" />
-      <div className="min-h-screen bg-[#F8F8F8] text-[#02060D]">
+      <div className="min-h-screen bg-white text-[#02060D]">
         <main className="min-h-screen flex items-center justify-center px-4 pt-20">
           <SignUp
             appearance={{

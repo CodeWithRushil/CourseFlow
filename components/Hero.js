@@ -13,7 +13,7 @@ const Hero = () => {
   const scale = useTransform(scrollY, [0, 300], [0.95, 1]);
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen bg-[#F8F8F8] text-center px-4 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center min-h-screen bg-white text-center px-4 overflow-hidden">
       {/* === FLOATING CARDS CONTAINER === */}
       <div className="hidden md:block absolute inset-0 pointer-events-none">
         {/* LEFT TOP */}
