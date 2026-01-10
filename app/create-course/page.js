@@ -127,7 +127,7 @@ const CreateCourse = () => {
         1. Added pt-24 (96px) to clear the fixed header. 
         2. flex-1 ensures the footer (if any) stays at the bottom.
       */}
-      <main className="flex-1 flex flex-col items-center px-4 py-8 sm:px-10 mt-16">
+      <main className="flex-1 flex flex-col items-center px-4 py-8 sm:px-10 mt-16 justify-center">
         {/* CARD CONTAINER
           1. Changed w-4xl to w-full max-w-4xl for mobile responsiveness.
           2. Adjusted padding for mobile (p-6) vs desktop (p-10).

@@ -76,7 +76,7 @@ const Hero = () => {
         <Link
           href="/dashboard"
           className="inline-flex items-center justify-center px-6 py-3 text-white bg-[#155DFC] rounded-lg 
-                     hover:bg-blue-800 transition-all font-semibold shadow-md"
+                     hover:bg-blue-700 transition-all font-semibold shadow-md"
         >
           Get Started For Free
         </Link>

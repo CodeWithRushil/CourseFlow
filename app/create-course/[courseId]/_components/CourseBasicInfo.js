@@ -5,6 +5,8 @@ import EditCourseInfo from "./EditCourseInfo";
 import { Client, Storage, ID } from "appwrite";
 import Link from "next/link";
 import { MdOutlineCategory } from "react-icons/md";
+import { RiGeminiFill } from "react-icons/ri";
+import { IoIosPlay } from "react-icons/io";
 
 const CourseBasicInfo = ({
   course,
@@ -60,7 +62,7 @@ const CourseBasicInfo = ({
   return (
     <>
       <div className="p-6 md:p-10 rounded-xl border mt-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 items-center justify-center md:grid-cols-2 gap-8 md:gap-10">
           {/* LEFT CONTENT */}
           <div className="flex flex-col gap-4 order-2 md:order-1">
             <h2 className="flex items-center gap-2 font-bold text-xl md:text-2xl">
@@ -84,8 +86,8 @@ const CourseBasicInfo = ({
 
             {!edit && (
               <Link href={`/course/${course.courseId}/start`}>
-                <button className="w-full mt-2 px-6 py-2 rounded-lg bg-[#155DFC] text-white font-semibold hover:bg-blue-800 cursor-pointer transition">
-                  Start
+                <button className="w-full flex items-center justify-center gap-2 mt-2 px-6 py-2 rounded-lg bg-[#155DFC] text-white font-semibold hover:bg-blue-700 cursor-pointer transition text-sm md:text-base">
+                  <IoIosPlay /> Start
                 </button>
               </Link>
             )}
@@ -93,9 +95,9 @@ const CourseBasicInfo = ({
             {edit && (
               <button
                 onClick={generateChapterContent}
-                className="w-full md:w-auto mt-2 px-6 py-2.5 rounded-lg bg-[#155DFC] text-white font-semibold hover:bg-blue-800 cursor-pointer transition"
+                className="w-full flex items-center justify-center gap-2 md:w-auto mt-2 px-6 py-2.5 rounded-lg bg-[#155DFC] text-white font-semibold hover:bg-blue-700 cursor-pointer transition text-sm md:text-base"
               >
-                Generate Course Content
+                <RiGeminiFill /> Generate Course Content
               </button>
             )}
           </div>

@@ -10,6 +10,7 @@ import youtube from "@/configs/youtube";
 import { useRouter } from "next/navigation";
 import ProfileHeader from "@/components/ProfileHeader";
 import MainLoader from "@/components/MainLoader";
+import { RiGeminiFill } from "react-icons/ri";
 
 const CourseLayout = ({ params }) => {
   const { user } = useUser();
@@ -122,8 +123,8 @@ const CourseLayout = ({ params }) => {
   return (
     <>
       <ProfileHeader />
-      <div className="mt-24 px-7 md:px-20 lg:px-44">
-        <h2 className="font-bold text-center text-2xl">Course Layout</h2>
+      <div className="mt-25 mb-20 sm:mb-25 sm:mt-30 px-7 md:px-20 lg:px-50">
+        <h2 className="font-semibold text-center text-2xl">Course Layout</h2>
         {loading ? (
           <div
             style={{
@@ -147,10 +148,10 @@ const CourseLayout = ({ params }) => {
             <CourseDetail course={course} />
             <Chapters course={course} refreshData={() => getCourseLayout()} />
             <button
-              className="mt-5 mb-10 cursor-pointer focus:outline-none text-white bg-[#155DFC] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-500 font-semibold"
+              className="flex items-center justify-center gap-2 mt-5 mb-10 cursor-pointer focus:outline-none text-white bg-[#155DFC] hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-500 font-semibold"
               onClick={generateChapterContent}
             >
-              Generate Course Content
+              <RiGeminiFill /> Generate Course Content
             </button>
           </>
         ) : (

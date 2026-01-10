@@ -38,7 +38,7 @@ const EditCourseInfo = ({ course, refreshData }) => {
     <AlertDialog>
       <AlertDialogTrigger>
         <h3 className="text-blue-700 text-lg cursor-pointer">
-          <BiSolidEdit className="text-blue-700 text-3xl" />
+          <BiSolidEdit className="text-blue-700 text-2xl sm:text-3xl" />
         </h3>
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -76,7 +76,7 @@ const EditCourseInfo = ({ course, refreshData }) => {
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction
-            className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 cursor-pointer"
+            className="px-6 py-2 bg-[#155DFC] text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 cursor-pointer"
             onClick={onUpdateHandler}
           >
             Update

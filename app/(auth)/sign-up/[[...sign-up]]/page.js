@@ -22,7 +22,7 @@ export default function Page() {
                 headerSubtitle: "text-gray-500 text-sm",
                 form: "gap-4",
                 formButtonPrimary:
-                  "bg-blue-600 hover:bg-blue-700 text-sm font-medium",
+                  "bg-[#155DFC] hover:bg-blue-700 text-sm font-medium",
                 socialButtonsBlockButton:
                   "border border-gray-200 hover:bg-gray-100",
                 footerActionText: "text-sm",
