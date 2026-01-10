@@ -5,7 +5,11 @@ import { ClerkProvider } from "@clerk/nextjs";
 export const metadata = {
   title: "CourseFlow",
   description: "Made by Rushil Sharma",
-};
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/favicon.ico",
+  }
+};  
 
 export default function RootLayout({ children }) {
   return (
