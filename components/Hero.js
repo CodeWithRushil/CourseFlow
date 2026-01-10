@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
+import { RiRobot3Line, RiFlowChart } from "react-icons/ri";
+import { LuBrainCircuit, LuBookText } from "react-icons/lu";
 const Hero = () => {
   // Scroll-driven animation for tilted hero image
   const { scrollY } = useScroll();
@@ -13,83 +14,111 @@ const Hero = () => {
   const scale = useTransform(scrollY, [0, 300], [0.95, 1]);
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen bg-white text-center px-4 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-start min-h-screen bg-white text-center px-4 pt-20 overflow-hidden">
       {/* === FLOATING CARDS CONTAINER === */}
-      <div className="hidden md:block absolute inset-0 pointer-events-none">
-        {/* LEFT TOP */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none z-0">
+        {/* Changed 'md:block' to 'lg:block' to ensure cards only appear 
+      when there is significant horizontal space. 
+  */}
+
+        {/* LEFT TOP — AI Brain */}
         <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[8%] top-[30%] bg-white/80 backdrop-blur-lg shadow-xl 
-                     rounded-xl p-2 w-25 h-25 flex items-center justify-center rotate-110"
+          className="absolute left-[2%] xl:left-[8%] top-[30%]
+                   bg-white/80 backdrop-blur-lg shadow-xl rounded-xl p-2
+                   w-20 h-20 xl:w-24 xl:h-24 flex items-center justify-center
+                   rotate-12"
         >
-          <div className="w-full h-full bg-gray-200 rounded-lg" />
+          <div className="w-full h-full bg-gray-50 rounded-lg flex items-center justify-center shadow-inner">
+            <RiRobot3Line className="text-4xl xl:text-5xl text-[#155DFC]" />
+          </div>
         </motion.div>
 
-        {/* LEFT BOTTOM */}
+        {/* LEFT BOTTOM — Auto Generation */}
         <motion.div
           animate={{ y: [0, 15, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[16%] top-[15%] bg-white/80 backdrop-blur-lg shadow-xl 
-                     rounded-xl p-2 w-25 h-25 flex items-center justify-center rotate-70"
+          className="absolute left-[5%] xl:left-[14%] top-[15%]
+                   bg-white/80 backdrop-blur-lg shadow-xl rounded-xl p-2
+                   w-20 h-20 xl:w-24 xl:h-24 flex items-center justify-center
+                   -rotate-12"
         >
-          <div className="w-full h-full bg-gray-200 rounded-lg" />
+          <div className="w-full h-full bg-gray-50 rounded-lg flex items-center justify-center shadow-inner">
+            <LuBrainCircuit className="text-4xl xl:text-5xl text-[#155DFC]" />
+          </div>
         </motion.div>
 
-        {/* RIGHT TOP */}
+        {/* RIGHT TOP — Learning Flow */}
         <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[8%] top-[30%] bg-white/80 backdrop-blur-lg shadow-xl 
-                     rounded-xl p-2 w-25 h-25 flex items-center justify-center rotate-110"
+          className="absolute right-[2%] xl:right-[8%] top-[30%]
+                   bg-white/80 backdrop-blur-lg shadow-xl rounded-xl p-2
+                   w-20 h-20 xl:w-24 xl:h-24 flex items-center justify-center
+                   -rotate-12"
         >
-          <div className="w-full h-full bg-gray-200 rounded-lg" />
+          <div className="w-full h-full bg-gray-50 rounded-lg flex items-center justify-center shadow-inner">
+            <RiFlowChart className="text-4xl xl:text-5xl text-[#155DFC]" />
+          </div>
         </motion.div>
 
-        {/* RIGHT BOTTOM */}
+        {/* RIGHT BOTTOM — AI Magic */}
         <motion.div
-          animate={{ y: [0, -15, 0] }}
+          animate={{ y: [0, 15, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[16%] top-[15%] bg-white/80 backdrop-blur-lg shadow-xl 
-                     rounded-xl p-2 w-25 h-25 flex items-center justify-center rotate-70"
+          className="absolute right-[5%] xl:right-[14%] top-[15%]
+                   bg-white/80 backdrop-blur-lg shadow-xl rounded-xl p-2
+                   w-20 h-20 xl:w-24 xl:h-24 flex items-center justify-center
+                   rotate-12"
         >
-          <div className="w-full h-full bg-gray-200 rounded-lg" />
+          <div className="w-full h-full bg-gray-50 rounded-lg flex items-center justify-center shadow-inner">
+            <LuBookText className="text-4xl xl:text-5xl text-[#155DFC]" />
+          </div>
         </motion.div>
       </div>
 
       {/* === HERO TEXT === */}
-      <div className="max-w-3xl relative z-10">
-        <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[#02060d] leading-tight">
-          CourseFlow
-        </h1>
-        <h1 className="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-[#02060d] leading-tight">
-          AI Course Generator
-        </h1>
-        <h1 className="mb-6 text-3xl md:text-4xl lg:text-5xl font-bold text-[#02060d] leading-tight">
-          Custom Learning Paths, Powered by AI
-        </h1>
-
-        <p className="mb-8 text-lg md:text-xl text-gray-700">
-          Create structured, engaging courses in minutes — powered by AI.
-        </p>
-
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center justify-center px-6 py-3 text-white bg-[#155DFC] rounded-lg 
-                     hover:bg-blue-700 transition-all font-semibold shadow-md"
+      <div className="max-w-4xl relative z-10 mt-14 sm:mt-30">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          Get Started For Free
-        </Link>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#02060d] tracking-tight mb-4">
+            CourseFlow
+          </h1>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800 mb-6">
+            Custom Learning Paths{" "}
+            <span className="block text-[#155DFC]">Powered by AI</span>
+          </h2>
+          <p className="max-w-xl mx-auto md:mx-0 mb-8 text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
+            Create structured, engaging courses in minutes. Stop searching and
+            start learning with personalized curriculums.
+          </p>
+
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center justify-center px-6 sm:px-8 py-3 text-sm sm:text-base
+                 text-white bg-[#155DFC] rounded-lg hover:bg-blue-700
+                 transition-all font-semibold shadow-md"
+          >
+            Get Started For Free
+          </Link>
+        </motion.div>
       </div>
 
       {/* === SCROLL TRANSFORM IMAGE === */}
-      {/* === SCROLL TRANSFORM IMAGE (FIXED) === */}
       <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.15 }} // slight delay feels nice
         style={{
           y: translateY,
           scale,
         }}
-        className="mt-15 mb-30 w-full max-w-7xl perspective-2000 drop-shadow-2xl drop-shadow-blue-100"
+        className="mt-8 sm:mt-12 mb-24 w-full max-w-7xl perspective-[2000px]
+             drop-shadow-2xl drop-shadow-blue-100 px-4 sm:px-6"
       >
         <motion.div
           style={{
@@ -102,7 +131,8 @@ const Hero = () => {
             alt="CourseFlow Demo"
             width={1600}
             height={1200}
-            className="w-full h-auto drop-shadow-xl rounded-xl"
+            className="w-full h-auto rounded-xl drop-shadow-xl"
+            priority
           />
         </motion.div>
       </motion.div>
