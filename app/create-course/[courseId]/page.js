@@ -31,8 +31,7 @@ const CourseLayout = ({ params }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        courseId: params.courseId,
-        email: user?.primaryEmailAddress?.emailAddress,
+        courseId: params.courseId
       }),
     });
     const data = await result.json();

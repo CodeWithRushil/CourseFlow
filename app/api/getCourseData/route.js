@@ -8,7 +8,7 @@ export async function POST(req) {
 
     const body = await req.json();
 
-    const course = await courseLayoutModel.findOne({courseId: body.courseId, createdBy: body.email});
+    const course = await courseLayoutModel.findOne({courseId: body.courseId});
     if (!course) {
       return NextResponse.json(
         { success: false, message: "Course not found rushil" },

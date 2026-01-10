@@ -7,6 +7,8 @@ import Link from "next/link";
 import { MdOutlineCategory } from "react-icons/md";
 import { RiGeminiFill } from "react-icons/ri";
 import { IoIosPlay } from "react-icons/io";
+import MainLoader from "@/components/MainLoader";
+import { useUser } from "@clerk/nextjs";
 
 const CourseBasicInfo = ({
   course,
@@ -14,41 +16,47 @@ const CourseBasicInfo = ({
   edit = true,
   generateChapterContent,
 }) => {
+  const { user } = useUser();
+  const isCreator = user?.primaryEmailAddress?.emailAddress === course.createdBy;
   console.log("Course received:", course);
+  const [uploading, setUploading] = useState(false);
   const onFileSelected = async (event) => {
     const client = new Client()
       .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
       .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID);
+
     const storage = new Storage(client);
     const file = event.target.files[0];
+
+    if (!file) return;
+
     try {
+      setUploading(true);
       const response = await storage.createFile(
         process.env.NEXT_PUBLIC_APPWRITE_BUCKET_ID,
         ID.unique(),
         file
       );
-      console.log("File uploaded Appwrite:", response);
+
       const fileId = response.$id;
       const downloadUrl = storage.getFileDownload(
         process.env.NEXT_PUBLIC_APPWRITE_BUCKET_ID,
         fileId
       );
-      console.log("Download URL Appwrite: ", downloadUrl);
+
       course.courseBanner = downloadUrl;
-      try {
-        const res = await fetch("/api/updateCourseLayout", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(course),
-        });
-        const data = await res.json();
-        console.log("Updated Banner in Database: ", data);
-        refreshData(true);
-      } catch (err) {
-        console.error("Error updating course banner:", err);
-      }
+
+      await fetch("/api/updateCourseLayout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(course),
+      });
+
+      refreshData(true);
     } catch (error) {
-      console.error("Upload error Appwrite:", error);
+      console.error("Upload error:", error);
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -61,6 +69,21 @@ const CourseBasicInfo = ({
   }
   return (
     <>
+      {uploading && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            display: "grid",
+            placeItems: "center",
+            backgroundColor: "#ffffff",
+            zIndex: 9999,
+          }}
+        >
+          <MainLoader />
+        </div>
+      )}
+
       <div className="p-6 md:p-10 rounded-xl border mt-5">
         <div className="grid grid-cols-1 items-center justify-center md:grid-cols-2 gap-8 md:gap-10">
           {/* LEFT CONTENT */}
@@ -86,8 +109,8 @@ const CourseBasicInfo = ({
 
             {!edit && (
               <Link href={`/course/${course.courseId}/start`}>
-                <button className="w-full flex items-center justify-center gap-2 mt-2 px-6 py-2 rounded-lg bg-[#155DFC] text-white font-semibold hover:bg-blue-700 cursor-pointer transition text-sm md:text-base">
-                  <IoIosPlay /> Start
+                <button className="w-full flex items-center justify-center gap-1 mt-2 px-6 py-2 rounded-lg bg-[#155DFC] text-white font-semibold hover:bg-blue-700 cursor-pointer transition text-sm md:text-base">
+                  <IoIosPlay size={18} /> Start
                 </button>
               </Link>
             )}
@@ -104,21 +127,34 @@ const CourseBasicInfo = ({
 
           {/* RIGHT IMAGE */}
           <div className="w-full order-1 md:order-2">
-            <label htmlFor="upload-image" className="block cursor-pointer">
+            {isCreator ? (
+              <label htmlFor="upload-image" className="block cursor-pointer">
+                <Image
+                  src={course.courseBanner}
+                  alt="Course Image"
+                  width={600}
+                  height={400}
+                  className="w-full h-56 object-cover rounded-xl"
+                />
+              </label>
+            ) : (
               <Image
                 src={course.courseBanner}
                 alt="Course Image"
                 width={600}
                 height={400}
-                className="w-full h-56 md:h-[250px] object-cover rounded-xl"
+                className="w-full h-56 object-cover rounded-xl cursor-not-allowed"
               />
-            </label>
-            <input
-              type="file"
-              id="upload-image"
-              className="hidden"
-              onChange={onFileSelected}
-            />
+            )}
+
+            {isCreator && (
+              <input
+                type="file"
+                id="upload-image"
+                className="hidden"
+                onChange={onFileSelected}
+              />
+            )}
           </div>
         </div>
       </div>
