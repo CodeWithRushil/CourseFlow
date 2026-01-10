@@ -15,6 +15,9 @@ import { useRouter } from "next/navigation";
 import { MdOutlineCategory } from "react-icons/md";
 import { FaRegLightbulb } from "react-icons/fa";
 import { CgOptions } from "react-icons/cg";
+import { RiGeminiFill } from "react-icons/ri";
+import { BiSolidLeftArrow } from "react-icons/bi";
+import { BiSolidRightArrow } from "react-icons/bi";
 
 const CreateCourse = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -111,21 +114,26 @@ const CreateCourse = () => {
     // setLoadingComplete(true);
     router.replace("/create-course/" + id);
   };
+  const stepMarginTop = {
+    0: "mt-14 sm:mt-22",
+    1: "mt-35 sm:mt-15",
+    2: "mt-12 sm:mt-20",
+  };
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-white">
       <ProfileHeader />
 
       {/* MAIN WRAPPER 
         1. Added pt-24 (96px) to clear the fixed header. 
         2. flex-1 ensures the footer (if any) stays at the bottom.
       */}
-      <main className="flex-1 flex flex-col items-center px-4 py-8 sm:px-10 mt-24">
+      <main className="flex-1 flex flex-col items-center px-4 py-8 sm:px-10 mt-16">
         {/* CARD CONTAINER
           1. Changed w-4xl to w-full max-w-4xl for mobile responsiveness.
           2. Adjusted padding for mobile (p-6) vs desktop (p-10).
         */}
-        <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 sm:p-10">
-          <h1 className="text-2xl sm:text-3xl text-center font-semibold text-[#155DFC] mb-10">
+        <div className="w-full max-w-4xl bg-white rounded-lg border border-gray-200 p-6 sm:p-8">
+          <h1 className="text-2xl sm:text-3xl text-center font-semibold text-slate-900 mb-10">
             Create Course
           </h1>
 
@@ -241,12 +249,14 @@ const CreateCourse = () => {
           </div>
 
           {/* Next & Previous */}
-          <div className="mt-16 sm:mt-24 flex flex-col sm:flex-row justify-between gap-4">
+          <div
+            className={`flex flex-col sm:flex-row justify-between gap-4 ${stepMarginTop[activeStep]}`}
+          >
             <Button
               onClick={handlePrev}
               disabled={activeStep === 0}
               variant="outline"
-              className={`normal-case text-sm font-medium px-4 py-1.5 rounded-md transition-all 
+              className={`flex items-center justify-center gap-2 normal-case text-sm font-medium px-4 py-1.5 rounded-md transition-all 
       ${
         activeStep === 0
           ? "bg-gray-200 text-gray-500 cursor-not-allowed border-gray-200"
@@ -254,28 +264,28 @@ const CreateCourse = () => {
       } 
       sm:order-1 order-2`}
             >
-              Back
+              <BiSolidLeftArrow size={12} /> Back
             </Button>
 
             {activeStep < 2 ? (
               <Button
                 onClick={handleNext}
                 disabled={checkStatus()}
-                className="normal-case cursor-pointer text-sm font-medium px-4 py-1.75 bg-[#155DFC] text-white rounded-md 
+                className="flex items-center justify-center gap-2 normal-case cursor-pointer text-sm font-medium px-4 py-1.75 bg-[#155DFC] text-white rounded-md 
         hover:bg-blue-700 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed 
         sm:order-2 order-1"
               >
-                Next
+                Next <BiSolidRightArrow size={12} />
               </Button>
             ) : (
               <Button
                 onClick={generateCourseLayout}
                 disabled={checkStatus()}
-                className="normal-case cursor-pointer text-sm font-medium px-4 py-1.75 bg-[#155DFC] text-white rounded-md 
+                className="flex items-center gap-2 justify-center normal-case cursor-pointer text-sm font-medium px-4 py-1.75 bg-[#155DFC] text-white rounded-md 
         hover:bg-blue-700 active:scale-95 disabled:opacity-50 
         sm:order-2 order-1"
               >
-                Generate Course
+                <RiGeminiFill /> Generate Course
               </Button>
             )}
           </div>

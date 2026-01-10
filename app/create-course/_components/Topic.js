@@ -1,8 +1,9 @@
 import { UserInputContext } from "@/app/_context/UserInputContext";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 const Topic = () => {
   const { userCourseInput, setUserCourseInput } = useContext(UserInputContext);
+
   const handleInputChange = (field, value) => {
     setUserCourseInput((prev) => ({
       ...prev,
@@ -10,17 +11,13 @@ const Topic = () => {
     }));
   };
 
-  useEffect(() => {
-    console.log(userCourseInput);
-  }, [userCourseInput]);
-
   return (
     <>
       {/* Topic */}
-      <div className="mt-8 mb-6">
+      <div className="mt-6 mb-8 sm:mb-5">
         <label
           htmlFor="topic-input"
-          className="block mb-2 text-sm sm:text-base font-medium text-gray-900"
+          className="block mb-2 text-sm font-medium text-gray-900"
         >
           Enter the topic
         </label>
@@ -28,63 +25,58 @@ const Topic = () => {
         <input
           type="text"
           id="topic-input"
-          onChange={(e) => handleInputChange("topic", e.target.value)}
           defaultValue={userCourseInput?.topic}
+          onChange={(e) => handleInputChange("topic", e.target.value)}
           placeholder="Topic"
           className="
-        w-full
-        rounded-lg
-        border
-        border-gray-300
-        bg-gray-50
-        px-3
-        py-2.5
-        sm:px-4
-        sm:py-3
-        text-sm
-        sm:text-base
-        text-gray-900
-        focus:ring-2
-        focus:ring-[#155DFC]
-        focus:border-[#155DFC]
-        transition
-      "
+    w-full
+    rounded-md
+    border border-gray-300
+    bg-gray-50
+
+    px-4 py-3 text-base        
+
+    sm:px-3 sm:py-2.5 sm:text-sm 
+
+    text-gray-900
+    focus:ring-2 focus:ring-[#155DFC]
+    focus:border-[#155DFC]
+    transition
+  "
         />
       </div>
 
       {/* Description */}
-      <div className="mb-2">
+      <div>
         <label
           htmlFor="description-input"
-          className="block mb-2 text-sm sm:text-base font-medium text-gray-900"
+          className="block mb-2 text-sm font-medium text-gray-900"
         >
           Description about the course
         </label>
 
         <textarea
           id="description-input"
-          rows={4}
-          onChange={(e) => handleInputChange("description", e.target.value)}
+          rows={3}
           defaultValue={userCourseInput?.description}
+          onChange={(e) => handleInputChange("description", e.target.value)}
           placeholder="About your course"
           className="
-        w-full
-        rounded-lg
-        border
-        border-gray-300
-        bg-gray-50
-        px-3
-        py-3
-        sm:px-4
-        text-sm
-        sm:text-base
-        text-gray-900
-        focus:ring-2
-        focus:ring-[#155DFC]
-        focus:border-[#155DFC]
-        transition
-        resize-none
-      "
+    w-full
+    rounded-md
+    border border-gray-300
+    bg-gray-50
+
+    px-4 py-3 text-base     
+
+    sm:px-3 sm:py-2.5 sm:text-sm 
+
+    text-gray-900
+    focus:ring-2 focus:ring-[#155DFC]
+    focus:border-[#155DFC]
+    transition
+    resize-none
+  "
         />
       </div>
     </>
