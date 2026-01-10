@@ -6,6 +6,7 @@ import ChapterContent from "./_components/ChapterContent";
 import { HiMenuAlt2, HiX } from "react-icons/hi";
 import Link from "next/link";
 import Image from "next/image";
+import MainLoader from "@/components/MainLoader";
 
 const StartCourse = ({ params }) => {
   const { user, isLoaded } = useUser();
@@ -59,7 +60,21 @@ const StartCourse = ({ params }) => {
     if (data.success) setSelectedChapterContent(data.chapter);
   };
 
-  if (!course?.courseOutput) return <div className="p-4">Loading...</div>;
+  if (!course?.courseOutput)
+    return (
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          display: "grid",
+          placeItems: "center",
+          backgroundColor: "#ffffff",
+          zIndex: 9999,
+        }}
+      >
+        <MainLoader />
+      </div>
+    );
 
   return (
     <>
