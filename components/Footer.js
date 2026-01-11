@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { RiTwitterXFill, RiRedditLine } from "react-icons/ri";
 const Footer = () => {
   let currentDate = new Date();
   let currentYear = currentDate.getFullYear();
@@ -18,7 +20,7 @@ const Footer = () => {
                 height={30}
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-[#02060d]">
-                CourseFlow
+                Course<span className="italic">Flow</span>
               </span>
             </Link>
             <p className="mt-2 text-gray-800 text-sm mb-15 cursor-pointer">
@@ -31,10 +33,10 @@ const Footer = () => {
                 About
               </h2>
               <ul className="text-gray-500 font-medium">
-                <li className="mb-4">
+                <li className="mb-4 hover:underline">
                   <Link href="/why-linkedink">Why CourseFlow</Link>
                 </li>
-                <li>
+                <li className="hover:underline">
                   <Link href="/about-us">About Us</Link>
                 </li>
               </ul>
@@ -44,12 +46,12 @@ const Footer = () => {
                 Follow me
               </h2>
               <ul className="text-gray-500 font-medium">
-                <li className="mb-4">
+                <li className="mb-4 hover:underline">
                   <a target="_blank" href="https://github.com/CodeWithRushil">
                     Github
                   </a>
                 </li>
-                <li>
+                <li className="hover:underline">
                   <a
                     target="_blank"
                     href="https://linkedin.com/in/CodeWithRushil"
@@ -64,10 +66,10 @@ const Footer = () => {
                 Legal
               </h2>
               <ul className="text-gray-500 font-medium">
-                <li className="mb-4">
+                <li className="mb-4 hover:underline">
                   <Link href="/privacy-policy">Privacy Policy</Link>
                 </li>
-                <li>
+                <li className="hover:underline">
                   <Link href="/terms">Terms</Link>
                 </li>
               </ul>
@@ -83,42 +85,42 @@ const Footer = () => {
           <div className="flex mt-4 sm:justify-center sm:mt-0 items-center">
             <a
               href="https://instagram.com/rushil.in"
-              className="text-gray-500 hover:text-white text-lg"
+              className="text-gray-500 hover:text-slate-900 text-lg"
               target="_blank"
             >
-              <i className="ri-instagram-line" />
+              <FaInstagram />
               <span className="sr-only">Instagram Profile</span>
             </a>
             <a
               href="https://reddit.com/u/CodeWithRuvian"
-              className="text-gray-500 hover:text-white ms-5 text-lg"
+              className="text-gray-500 hover:text-slate-900 ms-5 text-lg"
               target="_blank"
             >
-              <i className="ri-reddit-line" />
+              <RiRedditLine />
               <span className="sr-only">Reddit Profile</span>
             </a>
             <a
               href="https://x.com/CodeWithRushil"
-              className="text-gray-500 hover:text-white ms-5 text-lg"
+              className="text-gray-500 hover:text-slate-900 ms-5 text-lg"
               target="_blank"
             >
-              <i className="ri-twitter-x-line" />
+              <RiTwitterXFill />
               <span className="sr-only">Twitter page</span>
             </a>
             <a
               href="https://github.com/CodeWithRushil"
-              className="text-gray-500 hover:text-white ms-5 text-lg"
+              className="text-gray-500 hover:text-slate-900 ms-5 text-lg"
               target="_blank"
             >
-              <i className="ri-github-fill" />
+              <FaGithub />
               <span className="sr-only">GitHub Account</span>
             </a>
             <a
               href="https://linkedin.com/in/CodeWithRushil"
-              className="text-gray-500 hover:text-white ms-5 text-lg"
+              className="text-gray-500 hover:text-slate-900 ms-5 text-lg"
               target="_blank"
             >
-              <i className="ri-linkedin-fill" />
+              <FaLinkedinIn />
               <span className="sr-only">LinkedIn Account</span>
             </a>
           </div>

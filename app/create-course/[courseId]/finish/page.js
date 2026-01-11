@@ -55,7 +55,7 @@ const FinishPage = ({ params }) => {
       ) : course.courseOutput ? (
         <>
           <ProfileHeader />
-          <h2 className="font-semibold text-center text-2xl">
+          <h2 className="font-semibold text-center text-xl sm:text-2xl">
             Congrats!
             <br className="block md:hidden" />
             <span className="hidden md:inline"> </span>

@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,7 +32,7 @@ const Hero = () => {
           <div className="w-full h-full bg-gray-50 rounded-lg flex items-center justify-center shadow-inner">
             <RiRobot3Line className="text-4xl xl:text-5xl text-[#155DFC]" />
           </div>
-        </motion.div> 
+        </motion.div>
 
         {/* LEFT BOTTOM — Auto Generation */}
         <motion.div
@@ -86,7 +85,7 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#02060d] tracking-tight mb-4">
-            CourseFlow
+            Course<span className="italic">Flow</span>
           </h1>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800 mb-6">
             Custom Learning Paths{" "}

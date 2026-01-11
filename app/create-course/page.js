@@ -133,7 +133,7 @@ const CreateCourse = () => {
           2. Adjusted padding for mobile (p-6) vs desktop (p-10).
         */}
         <div className="w-full max-w-4xl bg-white rounded-lg border border-gray-200 p-6 sm:p-8">
-          <h1 className="text-2xl sm:text-3xl text-center font-semibold text-slate-900 mb-10">
+          <h1 className="text-xl sm:text-2xl text-center font-semibold text-slate-900 mb-10">
             Create Course
           </h1>
 

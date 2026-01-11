@@ -39,7 +39,7 @@ const SideBar = () => {
               <Link href="/dashboard" className="flex items-center gap-2">
                 <Image src="/logo.svg" alt="Logo" width={30} height={30} />
                 <span className="text-2xl font-semibold text-[#02060d]">
-                  CourseFlow
+                  Course<span className="italic">Flow</span>
                 </span>
               </Link>
             </div>
