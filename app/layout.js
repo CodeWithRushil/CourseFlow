@@ -4,12 +4,17 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata = {
   title: "CourseFlow",
-  description: "Made by Rushil Sharma",
+  description:
+    "An AI-powered learning platform that helps you create custom learning paths and structured courses in minutes.",
   icons: {
     icon: "/favicon.ico",
     apple: "/favicon.ico",
-  }
-};  
+  },
+  category: "Education",
+  authors: [{ name: "Rushil Sharma" }],
+  creator: "Rushil Sharma",
+  publisher: "CourseFlow",
+};
 
 export default function RootLayout({ children }) {
   return (
