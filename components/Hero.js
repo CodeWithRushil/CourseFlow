@@ -126,7 +126,7 @@ const Hero = () => {
           }}
         >
           <Image
-            src="/aly.avif"
+            src="/main.png"
             alt="CourseFlow Demo"
             width={1600}
             height={1200}
