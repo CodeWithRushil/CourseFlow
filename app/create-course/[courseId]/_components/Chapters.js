@@ -5,7 +5,7 @@ import { LuClock4 } from "react-icons/lu";
 const Chapters = ({ course, refreshData, edit = true }) => {
   return (
     <>
-      <h3 className="font-semibold text-xl">Chapters</h3>
+      <h3 className="mt-16 font-semibold text-xl">Chapters</h3>
 
       {course.courseOutput.chapters.map((item, index) => (
         <div

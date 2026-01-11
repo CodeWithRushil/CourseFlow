@@ -5,7 +5,7 @@ import { UserButton } from "@clerk/nextjs";
 const Header = () => {
   return (
     <nav className="bg-[#FFFFFF] border-b border-gray-200 fixed w-full z-20 top-0 start-0">
-      <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-3.5 py-3 lg:px-4">
+      <div className="max-w-screen-xl 2xl:max-w-[1440px] 2xl:min-[1700px]:max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto px-3.5 py-3 lg:px-4">
         <Link
           href="/dashboard"
           className="flex items-center space-x-2 rtl:space-x-reverse"

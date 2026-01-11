@@ -33,7 +33,7 @@ const Hero = () => {
           <div className="w-full h-full bg-gray-50 rounded-lg flex items-center justify-center shadow-inner">
             <RiRobot3Line className="text-4xl xl:text-5xl text-[#155DFC]" />
           </div>
-        </motion.div>
+        </motion.div> 
 
         {/* LEFT BOTTOM — Auto Generation */}
         <motion.div

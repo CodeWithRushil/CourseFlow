@@ -123,7 +123,7 @@ const CourseLayout = ({ params }) => {
     <>
       <ProfileHeader />
       <div className="mt-25 mb-20 sm:mb-25 sm:mt-30 px-7 md:px-20 lg:px-50">
-        <h2 className="font-semibold text-center text-2xl">Course Layout</h2>
+        <h2 className="font-semibold text-center  text-xl sm:text-2xl">Course Layout</h2>
         {loading ? (
           <div
             style={{
