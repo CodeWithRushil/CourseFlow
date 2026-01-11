@@ -113,6 +113,7 @@ const CreateCourse = () => {
     setLoading(false);
     // setLoadingComplete(true);
     router.replace("/create-course/" + id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const stepMarginTop = {
     0: "mt-14 sm:mt-22",

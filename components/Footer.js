@@ -30,14 +30,24 @@ const Footer = () => {
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 className="uppercase mb-6 text-md font-semibold text-[#02060d]">
-                About
+                Quick Links
               </h2>
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
-                  <Link href="/why-linkedink" className="hover:underline">Why CourseFlow</Link>
+                  <Link href="/" className="hover:underline">
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/about-us" className="hover:underline">About Us</Link>
+                  <a
+                    href="https://www.rushilsharma.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Contact the creator of CourseFlow"
+                    className="hover:underline"
+                  >
+                    Contact
+                  </a>
                 </li>
               </ul>
             </div>
@@ -47,8 +57,12 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
-                  <a target="_blank" href="https://github.com/CodeWithRushil" className="hover:underline">
-                    Github 
+                  <a
+                    target="_blank"
+                    href="https://github.com/CodeWithRushil"
+                    className="hover:underline"
+                  >
+                    Github
                   </a>
                 </li>
                 <li>
@@ -68,10 +82,14 @@ const Footer = () => {
               </h2>
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
-                  <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
+                  <Link href="/privacy-policy" className="hover:underline">
+                    Privacy Policy
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="hover:underline">Terms & Conditions</Link>
+                  <Link href="/terms" className="hover:underline">
+                    Terms & Conditions
+                  </Link>
                 </li>
               </ul>
             </div>
