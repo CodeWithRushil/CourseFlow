@@ -33,11 +33,11 @@ const Footer = () => {
                 About
               </h2>
               <ul className="text-gray-500 font-medium">
-                <li className="mb-4 hover:underline">
-                  <Link href="/why-linkedink">Why CourseFlow</Link>
+                <li className="mb-4">
+                  <Link href="/why-linkedink" className="hover:underline">Why CourseFlow</Link>
                 </li>
-                <li className="hover:underline">
-                  <Link href="/about-us">About Us</Link>
+                <li>
+                  <Link href="/about-us" className="hover:underline">About Us</Link>
                 </li>
               </ul>
             </div>
@@ -46,15 +46,16 @@ const Footer = () => {
                 Follow me
               </h2>
               <ul className="text-gray-500 font-medium">
-                <li className="mb-4 hover:underline">
-                  <a target="_blank" href="https://github.com/CodeWithRushil">
-                    Github
+                <li className="mb-4">
+                  <a target="_blank" href="https://github.com/CodeWithRushil" className="hover:underline">
+                    Github 
                   </a>
                 </li>
-                <li className="hover:underline">
+                <li>
                   <a
                     target="_blank"
                     href="https://linkedin.com/in/CodeWithRushil"
+                    className="hover:underline"
                   >
                     LinkedIn
                   </a>
@@ -66,11 +67,11 @@ const Footer = () => {
                 Legal
               </h2>
               <ul className="text-gray-500 font-medium">
-                <li className="mb-4 hover:underline">
-                  <Link href="/privacy-policy">Privacy Policy</Link>
+                <li className="mb-4">
+                  <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                 </li>
-                <li className="hover:underline">
-                  <Link href="/terms">Terms</Link>
+                <li>
+                  <Link href="/terms" className="hover:underline">Terms</Link>
                 </li>
               </ul>
             </div>
