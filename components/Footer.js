@@ -29,7 +29,7 @@ const Footer = () => {
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-xl font-semibold text-[#02060d]">
+              <h2 className="uppercase mb-6 text-md font-semibold text-[#02060d]">
                 About
               </h2>
               <ul className="text-gray-500 font-medium">
@@ -42,8 +42,8 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-xl font-semibold text-[#02060d]">
-                Follow me
+              <h2 className="uppercase mb-6 text-md font-semibold text-[#02060d]">
+                Follow Me
               </h2>
               <ul className="text-gray-500 font-medium">
                 <li className="mb-4">
@@ -63,7 +63,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-xl font-semibold text-[#02060d]">
+              <h2 className="uppercase mb-6 text-md font-semibold text-[#02060d]">
                 Legal
               </h2>
               <ul className="text-gray-500 font-medium">
@@ -71,7 +71,7 @@ const Footer = () => {
                   <Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="hover:underline">Terms</Link>
+                  <Link href="/terms" className="hover:underline">Terms & Conditions</Link>
                 </li>
               </ul>
             </div>
