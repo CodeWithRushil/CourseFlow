@@ -55,7 +55,6 @@ const CreateCourse = () => {
   };
   const generateCourseLayout = async () => {
     setLoading(true);
-    // setLoadingComplete(false);
     const basicPrompt =
       "Generate A Course Tutorial on Following Detail with field as courseName, description, Along with chapterName, about, duration: category: ";
     const userPrompt =
@@ -72,18 +71,20 @@ const CreateCourse = () => {
       ", in JSON format without ```json. Keep the keys as category, chapters, courseName, description, level, topic, duration. Keep in mind to keep the keys same to same and case sensitive. Also, when you give chapterName, just give the name only and not any numbering.";
     const finalPrompt = basicPrompt + userPrompt;
     let result;
-    try {
-      result = await generateCourseLayout_AI(finalPrompt);
-      console.log(JSON.parse(result));
-    } catch (err) {
-      console.error("Error generating course:", err);
+    let success = false;
+    while (!success) {
+      try {
+        result = await generateCourseLayout_AI(finalPrompt);
+        console.log(JSON.parse(result));
+        console.log("✅ Chapter Layout Generated");
+        success = true;
+      } catch (err) {
+        console.error("Error generating course:", err);
+      }
     }
-    // setLoading(false);
     SaveCourseLayoutInDB(JSON.parse(result));
   };
   const SaveCourseLayoutInDB = async (courseLayout) => {
-    // setLoading(true);
-    //setLoadingComplete(false);
     var id = uuidv4();
     setID(id);
     const payload = {
@@ -111,7 +112,6 @@ const CreateCourse = () => {
       console.error("Error saving course:", err);
     }
     setLoading(false);
-    // setLoadingComplete(true);
     router.replace("/create-course/" + id);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
