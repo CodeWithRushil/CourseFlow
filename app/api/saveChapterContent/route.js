@@ -3,21 +3,32 @@ import { connectDB } from "@/configs/db";
 import courseContentModel from "@/models/courseContent";
 
 export async function POST(req) {
+  const MAX_RETRIES = 5;
+  let body;
   try {
-    await connectDB(); // ensure DB connected
-
-    const body = await req.json();
-    console.log("📦 Incoming chapter body:", body); // 👈 log incoming data
-
-    const chapter = await courseContentModel.create(body);
-    console.log("✅ Chapter saved:", chapter);
-
-    return NextResponse.json({ success: true, chapter });
-  } catch (err) {
-    console.error("❌ Error saving chapter:", err); // 👈 full error on server
+    body = await req.json();
+  } catch {
     return NextResponse.json(
-      { success: false, error: err.message },
-      { status: 500 }
+      { success: false, error: "Invalid JSON body" },
+      { status: 400 }
     );
+  }
+
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      await connectDB();
+      const chapter = await courseContentModel.create(body);
+
+      return NextResponse.json({ success: true, chapter });
+    } catch (err) {
+      console.error(`❌ Attempt ${attempt} failed:`, err);
+
+      if (attempt === MAX_RETRIES) {
+        return NextResponse.json(
+          { success: false, error: "Failed after retries" },
+          { status: 500 }
+        );
+      }
+    }
   }
 }

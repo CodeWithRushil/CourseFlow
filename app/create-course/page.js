@@ -77,12 +77,13 @@ const CreateCourse = () => {
         result = await generateCourseLayout_AI(finalPrompt);
         console.log(JSON.parse(result));
         console.log("✅ Chapter Layout Generated");
+        await SaveCourseLayoutInDB(JSON.parse(result));
+        console.log("✅ Chapter Layout Saved in DB");
         success = true;
       } catch (err) {
         console.error("Error generating course:", err);
       }
     }
-    SaveCourseLayoutInDB(JSON.parse(result));
   };
   const SaveCourseLayoutInDB = async (courseLayout) => {
     var id = uuidv4();
