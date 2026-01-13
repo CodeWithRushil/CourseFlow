@@ -55,21 +55,53 @@ const CreateCourse = () => {
   };
   const generateCourseLayout = async () => {
     setLoading(true);
-    const basicPrompt =
-      "Generate A Course Tutorial on Following Detail with field as courseName, description, Along with chapterName, about, duration: category: ";
-    const userPrompt =
-      "category: " +
-      userCourseInput.category +
-      ", topic: " +
-      userCourseInput.topic +
-      ", level: " +
-      userCourseInput.level +
-      ", duration: " +
-      userCourseInput.duration +
-      ", noOfChapters: " +
-      userCourseInput.chapters +
-      ", in JSON format without ```json. Keep the keys as category, chapters, courseName, description, level, topic, duration. Keep in mind to keep the keys same to same and case sensitive. Also, when you give chapterName, just give the name only and not any numbering.";
-    const finalPrompt = basicPrompt + userPrompt;
+    const finalPrompt = `
+You are a JSON API.  
+Your task is to generate a VALID JSON object only.
+
+RULES (STRICT):
+- Output ONLY raw JSON
+- No markdown
+- No explanations
+- No comments
+- No trailing commas
+- Keys must be EXACT and CASE-SENSITIVE
+- Do NOT add extra keys
+- Do NOT change key names
+- Do NOT number chapter names
+- Chapter names must be plain text only
+
+JSON STRUCTURE (MUST FOLLOW EXACTLY):
+{
+  "category": string,
+  "topic": string,
+  "level": string,
+  "duration": string,
+  "courseName": string,
+  "description": string,
+  "chapters": [
+    {
+      "chapterName": string,
+      "about": string,
+      "duration": string
+    }
+  ]
+}
+
+INPUT DATA:
+category: ${userCourseInput.category}
+topic: ${userCourseInput.topic}
+level: ${userCourseInput.level}
+duration: ${userCourseInput.duration}
+noOfChapters: ${userCourseInput.chapters}
+
+IMPORTANT:
+- chapters array length MUST equal noOfChapters
+- chapterName must NOT include numbering like "Chapter 1"
+- description must be 3–4 lines
+- about must be 3–4 lines
+`;
+
     let result;
     let success = false;
     while (!success) {
