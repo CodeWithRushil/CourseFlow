@@ -71,9 +71,7 @@ const TermsPage = () => {
       />
 
       <div className="min-h-screen bg-white pt-16 sm:pt-20">
-        {/* narrower on mobile, same on desktop */}
         <div className="max-w-[680px] sm:max-w-screen-2xl mx-auto px-7 sm:px-6 py-10 sm:py-16">
-          {/* TITLE */}
           <div className="mb-8 sm:mb-14 text-center sm:text-left">
             <h1 className="text-xl sm:text-3xl font-semibold text-slate-900 mb-1">
               Terms & Conditions
@@ -83,7 +81,6 @@ const TermsPage = () => {
             </p>
           </div>
 
-          {/* INTRO */}
           <p className="text-center sm:text-left text-sm sm:text-lg text-slate-600 leading-relaxed mb-10 sm:mb-16">
             Welcome to{" "}
             <span className="font-semibold text-[#155DFC]">
@@ -93,11 +90,9 @@ const TermsPage = () => {
             We’ve kept them as clear and straightforward as possible.
           </p>
 
-          {/* SECTIONS */}
           <div className="space-y-10 sm:space-y-16">
             {sections.map((section) => (
               <section key={section.id}>
-                {/* heading adapts for mobile */}
                 <div className="flex items-start gap-3 mb-3">
                   <span className="w-6 h-6 shrink-0 flex items-center justify-center bg-blue-50 text-[#155DFC] rounded-md text-xs sm:text-sm mt-0.5">
                     {section.id}
@@ -107,7 +102,6 @@ const TermsPage = () => {
                   </h2>
                 </div>
 
-                {/* paragraph no forced left padding on mobile */}
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed sm:pl-9">
                   {section.content}
                 </p>

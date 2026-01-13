@@ -21,12 +21,9 @@ const SideBar = () => {
 
   return (
     <>
-      {/* ===== NAVBAR ===== */}
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
-
-            {/* LEFT */}
             <div className="flex items-center gap-2 pl-0 sm:pl-2">
               {/* Mobile Toggle */}
               <button
@@ -44,7 +41,6 @@ const SideBar = () => {
               </Link>
             </div>
 
-            {/* RIGHT */}
             {isLoaded ? (
               <UserButton />
             ) : (
@@ -54,7 +50,6 @@ const SideBar = () => {
         </div>
       </nav>
 
-      {/* ===== OVERLAY (MOBILE ONLY) ===== */}
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -62,7 +57,6 @@ const SideBar = () => {
         />
       )}
 
-      {/* ===== SIDEBAR ===== */}
       <aside
         className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 bg-white border-r border-gray-200
         transform transition-transform duration-300
@@ -70,7 +64,6 @@ const SideBar = () => {
       >
         <div className="h-full px-3 pb-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
-
             <li>
               <Link
                 href="/dashboard"
@@ -130,7 +123,6 @@ const SideBar = () => {
                 <span className="ms-3 text-left">Sign Out</span>
               </button>
             </li>
-
           </ul>
         </div>
       </aside>

@@ -20,7 +20,6 @@ const ChapterContent = ({ chapter, includeVideo, content }) => {
 
   return (
     <div className="px-4 sm:px-6 md:px-10 py-8 max-w-8xl mx-auto">
-      {/* Chapter Title */}
       <h2 className="font-bold text-2xl sm:text-3xl text-gray-900 mb-2 text-center sm:text-left">
         {chapter?.chapterName}
       </h2>
@@ -28,7 +27,6 @@ const ChapterContent = ({ chapter, includeVideo, content }) => {
         {chapter?.about}
       </p>
 
-      {/* 🎥 Responsive Video Section */}
       {includeVideo && content?.videoId && (
         <div className="my-8 flex justify-center">
           <div
@@ -48,7 +46,6 @@ const ChapterContent = ({ chapter, includeVideo, content }) => {
         </div>
       )}
 
-      {/* 📘 Content Section */}
       <div>
         {content?.content?.map((item, index) => (
           <div
@@ -61,7 +58,6 @@ const ChapterContent = ({ chapter, includeVideo, content }) => {
 
             <ReactMarkdown>{item?.explanation}</ReactMarkdown>
 
-            {/* 💻 Improved Code Block */}
             {item?.code && (
               <div className="mt-6 rounded-lg overflow-hidden border border-slate-700">
                 {/* Header */}

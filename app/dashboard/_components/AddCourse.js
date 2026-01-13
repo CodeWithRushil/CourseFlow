@@ -9,10 +9,8 @@ const AddCourse = () => {
 
   return (
     <div className="px-1 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      {/* Text */}
       <div>
         {!isLoaded ? (
-          /* Skeleton */
           <div className="space-y-2 animate-pulse">
             <div className="h-7 w-55 sm:h-8 sm:w-60 bg-gray-200 rounded" />
             <div className="h-4 w-50 bg-gray-200 rounded" />

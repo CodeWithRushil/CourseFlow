@@ -1,4 +1,3 @@
-// configs/db.js
 import mongoose from "mongoose";
 
 const MONGO_URL = process.env.MONGO_URL;

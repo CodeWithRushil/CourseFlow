@@ -91,7 +91,7 @@ const FinishPage = ({ params }) => {
               <FaRegCopy className="text-lg sm:text-xl" />
             </button>
           </div>
-          {/* Course URL */}
+          
 
           <Chapters
             course={course}

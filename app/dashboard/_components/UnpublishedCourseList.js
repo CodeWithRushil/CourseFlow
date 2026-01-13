@@ -34,7 +34,6 @@ const UnpublishedCourseList = () => {
 
   return (
     <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {/* 1️⃣ LOADING → skeletons */}
       {loading &&
         [1, 2, 3, 4, 5, 6].map((index) => (
           <div
@@ -54,7 +53,6 @@ const UnpublishedCourseList = () => {
           </div>
         ))}
 
-      {/* 2️⃣ DATA → unpublished course cards */}
       {!loading &&
         unpublishedCourseList.length > 0 &&
         unpublishedCourseList.map((unpublishedCourse, index) => (
@@ -66,7 +64,6 @@ const UnpublishedCourseList = () => {
           />
         ))}
 
-      {/* 3️⃣ EMPTY → no unpublished courses */}
       {!loading && unpublishedCourseList.length === 0 && (
         <div className="col-span-full h-[60vh] flex flex-col items-center justify-center text-center py-16">
           <Image

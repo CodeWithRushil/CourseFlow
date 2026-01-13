@@ -11,7 +11,7 @@ export async function POST(req) {
     const chapter = await courseContentModel.findOne({courseId: body.courseId, chapterId: body.chapterId});
     if (!chapter) {
       return NextResponse.json(
-        { success: false, message: "chapter not found rushil check plz" },
+        { success: false, message: "Chapter not found" },
         { status: 404 }
       );
     }

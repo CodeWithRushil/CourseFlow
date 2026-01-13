@@ -35,7 +35,6 @@ const DeletableCourseList = () => {
 
   return (
     <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {/* 1️⃣ LOADING → skeletons */}
       {loading &&
         [1, 2, 3, 4, 5, 6].map((index) => (
           <div
@@ -63,7 +62,6 @@ const DeletableCourseList = () => {
           </div>
         ))}
 
-      {/* 2️⃣ DATA → deletable course cards */}
       {!loading &&
         userCourseList.length > 0 &&
         userCourseList.map((userCourse, index) => (
@@ -74,7 +72,6 @@ const DeletableCourseList = () => {
           />
         ))}
 
-      {/* 3️⃣ EMPTY → no courses */}
       {!loading && userCourseList.length === 0 && (
         <div className="col-span-full h-[60vh] flex flex-col items-center justify-center text-center py-16">
           <Image

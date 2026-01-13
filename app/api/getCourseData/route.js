@@ -11,7 +11,7 @@ export async function POST(req) {
     const course = await courseLayoutModel.findOne({courseId: body.courseId});
     if (!course) {
       return NextResponse.json(
-        { success: false, message: "Course not found rushil" },
+        { success: false, message: "Course not found" },
         { status: 404 }
       );
     }

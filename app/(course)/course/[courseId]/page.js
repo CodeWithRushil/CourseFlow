@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import ProfileHeader from "@/components/ProfileHeader";
 import MainLoader from "@/components/MainLoader";
-import Footer from "@/components/Footer";
 import { FaRegCopy } from "react-icons/fa";
 import toast from "react-hot-toast";
 
@@ -21,7 +20,7 @@ const ViewCourse = ({ params }) => {
   }, [params, user]);
 
   const getCourseLayout = async () => {
-    // await new Promise((resolve) => setTimeout(resolve, 5000));
+    
     const result = await fetch("/api/getCourseData", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -87,7 +86,7 @@ const ViewCourse = ({ params }) => {
               <FaRegCopy className="text-lg sm:text-xl cursor-pointer hover:scale-105 transition-transform" />
             </button>
           </div>
-          {/* Course URL */}
+          
 
           <Chapters
             course={course}

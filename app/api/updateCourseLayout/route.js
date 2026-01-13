@@ -7,7 +7,7 @@ export async function POST(req) {
         await connectDB();
 
         const body = await req.json();
-        console.log("Hello Rushil check this body: ", body);
+        
 
         const course = await courseLayoutModel.findOneAndUpdate(
             { courseId: body.courseId, createdBy: body.createdBy },

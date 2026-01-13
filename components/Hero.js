@@ -5,7 +5,6 @@ import Link from "next/link";
 import { RiRobot3Line, RiFlowChart } from "react-icons/ri";
 import { LuBrainCircuit, LuBookText } from "react-icons/lu";
 const Hero = () => {
-  // Scroll-driven animation for tilted hero image
   const { scrollY } = useScroll();
 
   const rotateX = useTransform(scrollY, [0, 300], [25, 0]);
@@ -14,13 +13,7 @@ const Hero = () => {
 
   return (
     <section className="relative flex flex-col items-center justify-start min-h-screen bg-white text-center px-4 pt-20 overflow-hidden">
-      {/* === FLOATING CARDS CONTAINER === */}
       <div className="hidden md:block absolute inset-0 pointer-events-none z-0">
-        {/* Changed 'md:block' to 'lg:block' to ensure cards only appear 
-      when there is significant horizontal space. 
-  */}
-
-        {/* LEFT TOP — AI Brain */}
         <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -34,7 +27,6 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* LEFT BOTTOM — Auto Generation */}
         <motion.div
           animate={{ y: [0, 15, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -48,7 +40,6 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* RIGHT TOP — Learning Flow */}
         <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -62,7 +53,6 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* RIGHT BOTTOM — AI Magic */}
         <motion.div
           animate={{ y: [0, 15, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -77,7 +67,6 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* === HERO TEXT === */}
       <div className="max-w-4xl relative z-10 mt-14 sm:mt-30">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -107,7 +96,6 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* === SCROLL TRANSFORM IMAGE === */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -11,7 +11,7 @@ export async function POST(req) {
     const userCourse = await courseLayoutModel.findOneAndDelete({courseId: body.courseId});
     if (!userCourse) {
       return NextResponse.json(
-        { success: false, message: "Course not deleted rushil" },
+        { success: false, message: "Course not deleted" },
         { status: 404 }
       );
     }

@@ -32,7 +32,7 @@ const StartCourse = ({ params }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        courseId: params.courseId
+        courseId: params.courseId,
       }),
     });
     const data = await res.json();
@@ -77,11 +77,9 @@ const StartCourse = ({ params }) => {
 
   return (
     <>
-      {/* 🔹 NEW NAVBAR (Replacing ProfileHeader) */}
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
-            {/* LEFT: Toggle + Logo */}
             <div className="flex items-center gap-2 pl-0 sm:pl-2">
               <button
                 onClick={() => setOpen(!open)}
@@ -98,7 +96,6 @@ const StartCourse = ({ params }) => {
               </Link>
             </div>
 
-            {/* RIGHT: Profile */}
             <div className="flex items-center">
               {isLoaded ? (
                 <UserButton afterSignOutUrl="/" />
@@ -110,7 +107,6 @@ const StartCourse = ({ params }) => {
         </div>
       </nav>
 
-      {/* 🔹 OVERLAY (Mobile Only) */}
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -118,9 +114,7 @@ const StartCourse = ({ params }) => {
         />
       )}
 
-      {/* 🔹 Course Layout */}
       <div className="relative pt-16">
-        {/* 🔹 MOBILE DRAWER */}
         <div
           className={`fixed left-0 top-0 z-40 h-screen w-80 bg-white
     border-r border-gray-200 pt-16
@@ -170,7 +164,6 @@ const StartCourse = ({ params }) => {
           </div>
         </div>
 
-        {/* 🔹 MODERN DESKTOP SIDEBAR (Untouched as requested) */}
         <div className="fixed hidden md:flex flex-col md:w-80 pt-16 top-0 h-screen border-r border-gray-200 bg-white">
           <div className="p-6 border-b border-gray-200">
             <h2 className="font-semibold text-xl text-slate-800 tracking-tight leading-tight">
@@ -212,7 +205,6 @@ const StartCourse = ({ params }) => {
           </div>
         </div>
 
-        {/* 🔹 Main Content Area */}
         <div
           className={`pt-4 transition-all duration-300 ${
             open ? "md:ml-80" : "md:ml-80"

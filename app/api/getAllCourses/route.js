@@ -11,7 +11,7 @@ export async function POST(req) {
     const allCourses = await courseLayoutModel.find({published: true});
     if (!allCourses) {
       return NextResponse.json(
-        { success: false, message: "All Courses not found rushil" },
+        { success: false, message: "All Courses not found" },
         { status: 404 }
       );
     }

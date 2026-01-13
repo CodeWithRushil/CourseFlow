@@ -11,7 +11,7 @@ export async function POST(req) {
     const unpublishedCourses = await courseLayoutModel.find({createdBy: body.email, published: false});
     if (!unpublishedCourses) {
       return NextResponse.json(
-        { success: false, message: "Unpublished Courses not found rushil" },
+        { success: false, message: "Unpublished Courses not found" },
         { status: 404 }
       );
     }

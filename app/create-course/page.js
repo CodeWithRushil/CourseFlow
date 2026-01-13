@@ -26,7 +26,6 @@ const CreateCourse = () => {
   const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
   const [loading, setLoading] = useState(false);
-  // const [loadingComplete, setLoadingComplete] = useState(false);
   const [ID, setID] = useState("");
   const { user } = useUser();
   const router = useRouter();
@@ -157,26 +156,17 @@ IMPORTANT:
     <div className="flex flex-col min-h-screen bg-white">
       <ProfileHeader />
 
-      {/* MAIN WRAPPER 
-        1. Added pt-24 (96px) to clear the fixed header. 
-        2. flex-1 ensures the footer (if any) stays at the bottom.
-      */}
       <main className="flex-1 flex flex-col items-center px-4 py-8 sm:px-10 mt-16 justify-center">
-        {/* CARD CONTAINER
-          1. Changed w-4xl to w-full max-w-4xl for mobile responsiveness.
-          2. Adjusted padding for mobile (p-6) vs desktop (p-10).
-        */}
         <div className="w-full max-w-4xl bg-white rounded-lg border border-gray-200 p-6 sm:p-8">
           <h1 className="text-xl sm:text-2xl text-center font-semibold text-slate-900 mb-10">
             Create Course
           </h1>
 
-          {/* Stepper - Max-w increased to make lines longer */}
+          {/* Stepper */}
           <div className="flex items-start justify-center w-full max-w-4xl mx-auto px-2">
             {/* Step 1 */}
             <div className="flex-1 flex flex-col items-center">
               <div className="flex items-center w-full">
-                {/* Spacer to keep icon centered */}
                 <div className="flex-1 h-[3px] invisible"></div>
 
                 <div className="w-10 h-10 shrink-0 flex items-center justify-center rounded-full bg-[#155DFC] transition-all duration-500 ease-linear shadow-md z-10">
@@ -185,7 +175,6 @@ IMPORTANT:
                   </span>
                 </div>
 
-                {/* Connecting Line 1 */}
                 <div
                   className={`flex-1 h-[3px] -mx-[1px] ${
                     activeStep > 0 ? "bg-[#155DFC]" : "bg-gray-300"
@@ -203,7 +192,6 @@ IMPORTANT:
             {/* Step 2 */}
             <div className="flex-1 flex flex-col items-center">
               <div className="flex items-center w-full">
-                {/* Connecting Line 1 (Left Side) */}
                 <div
                   className={`flex-1 h-[3px] -mx-[1px] ${
                     activeStep > 0 ? "bg-[#155DFC]" : "bg-gray-300"
@@ -220,7 +208,6 @@ IMPORTANT:
                   </span>
                 </div>
 
-                {/* Connecting Line 2 (Right Side) */}
                 <div
                   className={`flex-1 h-[3px] -mx-[1px] ${
                     activeStep > 1 ? "bg-[#155DFC]" : "bg-gray-300"
@@ -242,7 +229,6 @@ IMPORTANT:
             {/* Step 3 */}
             <div className="flex-1 flex flex-col items-center">
               <div className="flex items-center w-full">
-                {/* Connecting Line 2 */}
                 <div
                   className={`flex-1 h-[3px] -mx-[1px] ${
                     activeStep > 1 ? "bg-[#155DFC]" : "bg-gray-300"
@@ -259,7 +245,6 @@ IMPORTANT:
                   </span>
                 </div>
 
-                {/* Spacer to keep icon centered */}
                 <div className="flex-1 h-[3px] invisible"></div>
               </div>
               <div className="mt-3 text-center">

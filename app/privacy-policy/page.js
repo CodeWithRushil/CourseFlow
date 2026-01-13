@@ -72,7 +72,6 @@ const PrivacyPolicyPage = () => {
 
       <div className="min-h-screen bg-white pt-16 sm:pt-20">
         <div className="max-w-[680px] sm:max-w-screen-2xl mx-auto px-7 sm:px-6 py-10 sm:py-16">
-          {/* TITLE */}
           <div className="mb-8 sm:mb-14 text-center sm:text-left">
             <h1 className="text-xl sm:text-3xl font-semibold text-slate-900 mb-1">
               Privacy Policy
@@ -82,7 +81,6 @@ const PrivacyPolicyPage = () => {
             </p>
           </div>
 
-          {/* INTRO */}
           <p className="text-center sm:text-left text-sm sm:text-lg text-slate-600 leading-relaxed mb-10 sm:mb-16">
             Your privacy matters to{" "}
             <span className="font-semibold text-[#155DFC]">
@@ -92,7 +90,6 @@ const PrivacyPolicyPage = () => {
             information when you use our platform.
           </p>
 
-          {/* SECTIONS */}
           <div className="space-y-10 sm:space-y-16">
             {sections.map((section) => (
               <section key={section.id}>

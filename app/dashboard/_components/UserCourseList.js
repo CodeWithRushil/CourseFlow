@@ -34,7 +34,7 @@ const UserCourseList = () => {
 
   return (
     <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {/* 1️⃣ LOADING → skeletons */}
+      
       {loading &&
         [1, 2, 3, 4, 5, 6].map((index) => (
           <div
@@ -54,7 +54,7 @@ const UserCourseList = () => {
           </div>
         ))}
 
-      {/* 2️⃣ DATA → course cards */}
+      
       {!loading &&
         userCourseList.length > 0 &&
         userCourseList.map((userCourse, index) => (
@@ -65,7 +65,7 @@ const UserCourseList = () => {
           />
         ))}
 
-      {/* 3️⃣ EMPTY → no courses message */}
+      
       {!loading && userCourseList.length === 0 && (
         <div className="col-span-full h-[60vh] flex flex-col items-center justify-center text-center py-16">
           <Image

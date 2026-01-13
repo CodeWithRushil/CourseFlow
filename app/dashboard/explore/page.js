@@ -1,7 +1,7 @@
 import React from "react";
 import CourseList from "../_components/CourseList";
 
-const exlorePage = () => {
+const explorePage = () => {
   return (
     <>
       <div className="px-1">
@@ -15,4 +15,4 @@ const exlorePage = () => {
   );
 };
 
-export default exlorePage;
+export default explorePage;

@@ -35,8 +35,8 @@ const CourseLayout = ({ params }) => {
       }),
     });
     const data = await result.json();
-    if(data.course.published){
-      redirect('/course/' + params.courseId);
+    if (data.course.published) {
+      redirect("/course/" + params.courseId);
     }
     console.log("API response:", data);
     if (data.success) {
@@ -98,7 +98,7 @@ Chapter: ${chapter.chapterName}
             course.name + ":" + chapter.chapterName
           );
           console.log(`✅✅ Video ${i + 1}:`, rawVideo);
-          // either chapterContent or chapterContent.content based on AI response
+
           await SaveChapterInDB(
             chapter.chapterName,
             chapterContent.content,
@@ -148,9 +148,6 @@ Chapter: ${chapter.chapterName}
     } catch (err) {
       console.error(`Error saving chapter ${i + 1}:`, err);
     }
-    // setLoading(false);
-    // setLoadingComplete(true);
-    // router.replace('/visit-course/' + id);
   };
   return (
     <>
