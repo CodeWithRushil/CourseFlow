@@ -5,12 +5,12 @@ import CourseBasicInfo from "./_components/CourseBasicInfo";
 import CourseDetail from "./_components/CourseDetail";
 import Chapters from "./_components/Chapters";
 import Loading from "../_components/Loading";
-import { generateChapterContent_AI } from "@/configs/AiModel2";
+import { generateChapterContent_AI } from "@/configs/AiModel";
 import youtube from "@/configs/youtube";
 import { useRouter } from "next/navigation";
 import ProfileHeader from "@/components/ProfileHeader";
 import MainLoader from "@/components/MainLoader";
-import { RiGeminiFill } from "react-icons/ri";
+import { redirect } from "next/navigation";
 
 const CourseLayout = ({ params }) => {
   const { user } = useUser();
@@ -35,6 +35,9 @@ const CourseLayout = ({ params }) => {
       }),
     });
     const data = await result.json();
+    if(data.course.published){
+      redirect('/course/' + params.courseId);
+    }
     console.log("API response:", data);
     if (data.success) {
       setCourse(data.course);

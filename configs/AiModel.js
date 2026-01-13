@@ -1,60 +1,43 @@
-import { GoogleGenAI } from "@google/genai";
+"use server";
+import OpenAI from "openai";
 
-const ai = new GoogleGenAI({
-  apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY,
+const client = new OpenAI({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  baseURL: "https://openrouter.ai/api/v1",
+  defaultHeaders: {
+    "HTTP-Referer": "https://www.courseflow.tech", // change to prod later
+    "X-Title": "CourseFlow",
+  },
 });
 
 export async function generateCourseLayout_AI(userInput) {
-  const contents = [
-    {
-      role: "user",
-      parts: [
-        {
-          text: `${userInput}`
-        },
-      ],
-    },
-  ];
-
-  const tools = [
-    {
-      googleSearch: {
-      }
-    },
-  ];
-  
-  const config = {
-    thinkingConfig: {
-      thinkingBudget: -1,
-    },
-    tools,
-  };
-
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-pro",
-    config,
-    contents,
+  const response = await client.chat.completions.create({
+    model: "deepseek/deepseek-r1-0528:free",
+    messages: [
+      {
+        role: "user",
+        content: userInput,
+      },
+    ],
+    temperature: 0.2,
+    max_tokens: 1500,
   });
 
-  return response.text;
+  return response.choices[0].message.content;
 }
 
 export async function generateChapterContent_AI(userInput) {
-  const contents = [
-    {
-      role: "user",
-      parts: [
-        {
-          text: `${userInput}`
-        },
-      ],
-    },
-  ];
-
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-pro",
-    contents,
+  const response = await client.chat.completions.create({
+    model: "deepseek/deepseek-r1-0528:free",
+    messages: [
+      {
+        role: "user",
+        content: userInput,
+      },
+    ],
+    temperature: 0.4,
+    max_tokens: 2500,
   });
 
-  return response.text;
+  return response.choices[0].message.content;
 }

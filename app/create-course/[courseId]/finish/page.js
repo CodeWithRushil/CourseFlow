@@ -1,14 +1,13 @@
 "use client";
 import CourseBasicInfo from "../_components/CourseBasicInfo";
 import { useUser } from "@clerk/nextjs";
-import React, { Profiler, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
 import { FaRegCopy } from "react-icons/fa";
 import ProfileHeader from "@/components/ProfileHeader";
 import MainLoader from "@/components/MainLoader";
 import CourseDetail from "../_components/CourseDetail";
 import Chapters from "../_components/Chapters";
-import Footer from "@/components/Footer";
 
 const FinishPage = ({ params }) => {
   const { user } = useUser();
@@ -27,10 +26,13 @@ const FinishPage = ({ params }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        courseId: params.courseId
+        courseId: params.courseId,
       }),
     });
     const data = await result.json();
+    if (data.course.published) {
+      redirect("/course/" + params.courseId);
+    }
     console.log("API response:", data);
     if (data.success) {
       setCourse(data.course);

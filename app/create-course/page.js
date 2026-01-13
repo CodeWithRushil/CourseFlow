@@ -7,7 +7,7 @@ import Topic from "./_components/Topic";
 import Category from "./_components/Category";
 import Options from "./_components/Options";
 import { UserInputContext } from "../_context/UserInputContext";
-import { generateCourseLayout_AI } from "@/configs/AiModel2";
+import { generateCourseLayout_AI } from "@/configs/AiModel";
 import Loading from "./_components/Loading";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
