@@ -48,14 +48,43 @@ const CourseLayout = ({ params }) => {
     for (let i = 0; i < chapters.length; i++) {
       const chapter = chapters[i];
       let success = false;
-      const PROMPT =
-        " Explain the concept in Detail on Topic without ```json: " +
-        course.name +
-        "," +
-        "Chapter: " +
-        chapter.chapterName +
-        "," +
-        "in JSON Format without ```json with an array of at least 7 objects having fields: title, explanation, and code without ```json. Return ONLY raw JSON with the following EXACT structure: content named array having objects with fields title, explanation and code. Keep the keys as title, explanation and code. Keep in mind to keep the keys same to same and case sensitive. Return ONLY raw JSON. Do NOT wrap the response in ```json or ``` . Do NOT add explanations, comments, or extra text.";
+      const PROMPT = `
+You are a JSON API.
+
+Your task is to generate educational content in STRICT JSON format.
+
+RULES (MANDATORY):
+- Output ONLY raw JSON
+- No markdown
+- No \`\`\`
+- No explanations outside JSON
+- No comments
+- No trailing commas
+- Keys must be EXACT and CASE-SENSITIVE
+- Do NOT add extra keys
+- Do NOT rename keys
+
+JSON STRUCTURE (MUST MATCH EXACTLY):
+{
+  "content": [
+    {
+      "title": string,
+      "explanation": string,
+      "code": string
+    }
+  ]
+}
+
+CONTENT RULES:
+- content must be an array with AT LEAST 7 objects
+- explanation must be clear, beginner-friendly, and 3–5 lines
+- code must be relevant to the topic (use plain text, not markdown)
+- If code is not applicable, return an empty string ""
+
+TOPIC DETAILS:
+Course: ${course.name}
+Chapter: ${chapter.chapterName}
+`;
 
       while (!success) {
         try {
