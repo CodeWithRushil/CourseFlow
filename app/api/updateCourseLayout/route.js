@@ -22,7 +22,7 @@ export async function POST(req) {
             },
             { new: true, runValidators: true }
         );
-        console.log("✅ Course updated:", course);
+        // console.log("✅ Course updated:", course);
         return NextResponse.json({ success: true, course });
     } catch (err) {
         console.error("❌ Error in updating course:", err);

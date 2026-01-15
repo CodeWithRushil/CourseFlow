@@ -22,9 +22,9 @@ const DeleteCourse = ({ course, refreshCourses }) => {
       });
       const data = await res.json();
       await refreshCourses();
-      console.log("Course Deleted Successfully!");
+      // console.log("Course Deleted Successfully!");
     } catch (err) {
-      console.error("Error Deleting Course:", err);
+      // console.error("Error Deleting Course:", err);
     }
   };
   return (

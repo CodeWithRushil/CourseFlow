@@ -11,7 +11,7 @@ const Options = () => {
   };
 
   useEffect(() => {
-    console.log(userCourseInput);
+    // console.log(userCourseInput);
   }, [userCourseInput]);
 
   return (

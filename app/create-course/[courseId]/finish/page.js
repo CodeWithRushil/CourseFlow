@@ -33,7 +33,7 @@ const FinishPage = ({ params }) => {
     if (data.course.published) {
       redirect("/course/" + params.courseId);
     }
-    console.log("API response:", data);
+    // console.log("API response:", data);
     if (data.success) {
       setCourse(data.course);
     }

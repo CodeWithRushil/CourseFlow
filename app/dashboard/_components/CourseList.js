@@ -22,9 +22,9 @@ const CourseList = () => {
       });
       const data = await res.json();
       setCourseList(data.allCourses || []);
-      console.log("All Courses Fetched Successfully: ", data);
+      // console.log("All Courses Fetched Successfully: ", data);
     } catch (err) {
-      console.error("Error getting all courses:", err);
+      // console.error("Error getting all courses:", err);
     }
   };
 

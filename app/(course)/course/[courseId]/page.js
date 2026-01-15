@@ -29,7 +29,7 @@ const ViewCourse = ({ params }) => {
       }),
     });
     const data = await result.json();
-    console.log("API response:", data);
+    // console.log("API response:", data);
     if (data.success) {
       setCourse(data.course);
     }

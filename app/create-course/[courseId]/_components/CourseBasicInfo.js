@@ -18,7 +18,7 @@ const CourseBasicInfo = ({
 }) => {
   const { user } = useUser();
   const isCreator = user?.primaryEmailAddress?.emailAddress === course.createdBy;
-  console.log("Course received:", course);
+  // console.log("Course received:", course);
   const [uploading, setUploading] = useState(false);
   const onFileSelected = async (event) => {
     const client = new Client()

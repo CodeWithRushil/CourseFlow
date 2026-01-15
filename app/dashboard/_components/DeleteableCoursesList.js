@@ -25,9 +25,9 @@ const DeletableCourseList = () => {
       });
       const data = await res.json();
       setUserCourseList(data.userCourses || []);
-      console.log("User Courses Fetched Successfully: ", data);
+      // console.log("User Courses Fetched Successfully: ", data);
     } catch (err) {
-      console.error("Error getting user courses:", err);
+      // console.error("Error getting user courses:", err);
     } finally {
       setLoading(false);
     }

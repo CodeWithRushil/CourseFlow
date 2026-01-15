@@ -7,10 +7,10 @@ export async function POST(req) {
     await connectDB();
 
     const body = await req.json();
-    console.log("📦 Incoming body:", body);
+    // console.log("📦 Incoming body:", body);
 
     const course = await courseLayoutModel.create(body);
-    console.log("✅ Course saved:", course);
+    // console.log("✅ Course saved:", course);
 
     return NextResponse.json({ success: true, course });
   } catch (err) {

@@ -38,7 +38,7 @@ const CourseLayout = ({ params }) => {
     if (data.course.published) {
       redirect("/course/" + params.courseId);
     }
-    console.log("API response:", data);
+    // console.log("API response:", data);
     if (data.success) {
       setCourse(data.course);
     }
@@ -93,11 +93,11 @@ Chapter: ${chapter.chapterName}
         try {
           const result = await generateChapterContent_AI(PROMPT);
           const chapterContent = JSON.parse(result);
-          console.log(`✅ Chapter ${i + 1}:`, chapterContent);
+          console.log(`✅ Chapter ${i + 1} content generated`);
           const rawVideo = await youtube.getVideos(
             course.name + ":" + chapter.chapterName
           );
-          console.log(`✅✅ Video ${i + 1}:`, rawVideo);
+          console.log(`✅ Video of Chapter ${i + 1} fetched from YouTube`);
 
           await SaveChapterInDB(
             chapter.chapterName,
@@ -107,7 +107,7 @@ Chapter: ${chapter.chapterName}
           );
           success = true;
         } catch (err) {
-          console.error(`⚠️ Error on chapter ${i + 1}:`, err);
+          console.error(`⚠️ Error on chapter ${i + 1}`);
         }
       }
     }
@@ -120,9 +120,9 @@ Chapter: ${chapter.chapterName}
         body: JSON.stringify(updatedCourse),
       });
       const data = await res.json();
-      console.log("Updated in Database: ", data);
+      // console.log("Updated in Database: ", data);
     } catch (err) {
-      console.error("Error updating course:", err);
+      // console.error("Error updating course:", err);
     }
     setLoadingAnimation(false);
     router.replace("/create-course/" + course.courseId + "/finish");
@@ -143,7 +143,6 @@ Chapter: ${chapter.chapterName}
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      const data = await res.json();
       console.log(`Saved Chapter ${i + 1} to Database`);
     } catch (err) {
       console.error(`Error saving chapter ${i + 1}:`, err);

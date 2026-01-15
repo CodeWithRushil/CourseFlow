@@ -25,7 +25,7 @@ const EditChapter = ({ course, index, refreshData }) => {
   const onUpdateHandler = async () => {
     course.courseOutput.chapters[index].chapterName = name;
     course.courseOutput.chapters[index].about = about;
-    console.log("Updated Course Chapters basic: ", course);
+    // console.log("Updated Course Chapters basic: ", course);
     try {
       const res = await fetch("/api/updateCourseLayout", {
         method: "POST",
@@ -33,10 +33,10 @@ const EditChapter = ({ course, index, refreshData }) => {
         body: JSON.stringify(course),
       });
       const data = await res.json();
-      console.log("Updated in Database: ", data);
+      // console.log("Updated in Database: ", data);
       refreshData(true);
     } catch (err) {
-      console.error("Error updating course:", err);
+      // console.error("Error updating course:", err);
     }
   };
   return (

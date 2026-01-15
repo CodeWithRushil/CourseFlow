@@ -106,7 +106,7 @@ IMPORTANT:
     while (!success) {
       try {
         result = await generateCourseLayout_AI(finalPrompt);
-        console.log(JSON.parse(result));
+        // console.log(JSON.parse(result));
         console.log("✅ Chapter Layout Generated");
         await SaveCourseLayoutInDB(JSON.parse(result));
         console.log("✅ Chapter Layout Saved in DB");
@@ -139,7 +139,7 @@ IMPORTANT:
         body: JSON.stringify(payload),
       });
       const data = await res.json();
-      console.log("Saved to Database");
+      // console.log("Saved to Database");
     } catch (err) {
       console.error("Error saving course:", err);
     }

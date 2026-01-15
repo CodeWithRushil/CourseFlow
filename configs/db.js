@@ -16,9 +16,9 @@ export async function connectDB() {
       useUnifiedTopology: true,
     });
     isConnected = true;
-    console.log("✅ Connected to Database!");
+    // console.log("✅ Connected to Database!");
   } catch (err) {
-    console.error("❌ MongoDB connection error:", err);
+    // console.error("❌ MongoDB connection error:", err);
     throw err;
   }
 }
