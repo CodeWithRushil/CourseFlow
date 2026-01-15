@@ -97,7 +97,7 @@ Chapter: ${chapter.chapterName}
           const rawVideo = await youtube.getVideos(
             course.name + ":" + chapter.chapterName
           );
-          console.log(`✅ Video of Chapter ${i + 1} Fetched from YouTube`);
+          console.log(`✅ Video of Chapter ${i + 1} Fetched`);
 
           await SaveChapterInDB(
             chapter.chapterName,
@@ -143,7 +143,7 @@ Chapter: ${chapter.chapterName}
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      console.log(`Saved Chapter ${i + 1} to Database`);
+      console.log(`✅ Saved Chapter ${i + 1} to Database`);
     } catch (err) {
       console.error(`Error Saving Chapter ${i + 1}:`, err);
     }
