@@ -93,11 +93,11 @@ Chapter: ${chapter.chapterName}
         try {
           const result = await generateChapterContent_AI(PROMPT);
           const chapterContent = JSON.parse(result);
-          console.log(`✅ Chapter ${i + 1} content generated`);
+          console.log(`✅ Chapter ${i + 1} Content Generated`);
           const rawVideo = await youtube.getVideos(
             course.name + ":" + chapter.chapterName
           );
-          console.log(`✅ Video of Chapter ${i + 1} fetched from YouTube`);
+          console.log(`✅ Video of Chapter ${i + 1} Fetched from YouTube`);
 
           await SaveChapterInDB(
             chapter.chapterName,
@@ -145,7 +145,7 @@ Chapter: ${chapter.chapterName}
       });
       console.log(`Saved Chapter ${i + 1} to Database`);
     } catch (err) {
-      console.error(`Error saving chapter ${i + 1}:`, err);
+      console.error(`Error Saving Chapter ${i + 1}:`, err);
     }
   };
   return (

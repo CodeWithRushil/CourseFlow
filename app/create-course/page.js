@@ -107,9 +107,9 @@ IMPORTANT:
       try {
         result = await generateCourseLayout_AI(finalPrompt);
         // console.log(JSON.parse(result));
-        console.log("✅ Chapter Layout Generated");
+        console.log("✅ Course Layout Generated");
         await SaveCourseLayoutInDB(JSON.parse(result));
-        console.log("✅ Chapter Layout Saved in DB");
+        console.log("✅ Course Layout Saved in Database");
         success = true;
       } catch (err) {
         console.error("Error generating course:", err);
