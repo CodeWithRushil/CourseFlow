@@ -1,7 +1,16 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-const Header = ({ text, link, fallback="" }) => {
+import { useUser } from "@clerk/nextjs";
+
+const Header = ({ text = "Get Started", link = "dashboard", fallback = "" }) => {
+  const { isSignedIn, isLoaded } = useUser();
+  const buttonText =
+    isLoaded && isSignedIn && (text === "Get Started" || text === "Get started")
+      ? "Dashboard"
+      : text;
+
   return (
     <nav className="bg-[#FFFFFF] border-b border-gray-200 fixed w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl 2xl:max-w-[1440px] 2xl:min-[1700px]:max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -25,7 +34,7 @@ const Header = ({ text, link, fallback="" }) => {
               type="button"
               className="text-white bg-[#155DFC] hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-700 cursor-pointer"
             >
-              {text}
+              {buttonText}
             </button>
           </Link>
         </div>

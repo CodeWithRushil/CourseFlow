@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { UserInputContext } from '../_context/UserInputContext';
 import Footer from '@/components/Footer';
+import { Toaster } from "react-hot-toast";
 
 const layout = ({children}) => {
     const [userCourseInput, setUserCourseInput]=useState([]);
@@ -9,6 +10,7 @@ const layout = ({children}) => {
     <UserInputContext.Provider value={{userCourseInput, setUserCourseInput}}>
     <>
     {children}
+    <Toaster position="bottom-center" />
     <Footer/>
     </>
     </UserInputContext.Provider>

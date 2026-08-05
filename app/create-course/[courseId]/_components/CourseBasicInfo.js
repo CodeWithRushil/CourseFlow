@@ -7,8 +7,9 @@ import Link from "next/link";
 import { MdOutlineCategory } from "react-icons/md";
 import { RiGeminiFill } from "react-icons/ri";
 import { IoIosPlay } from "react-icons/io";
-import MainLoader from "@/components/MainLoader";
+import { ImagePlus, ImageUp } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
+import toast from "react-hot-toast";
 
 const CourseBasicInfo = ({
   course,
@@ -18,8 +19,11 @@ const CourseBasicInfo = ({
 }) => {
   const { user } = useUser();
   const isCreator = user?.primaryEmailAddress?.emailAddress === course.createdBy;
-  // console.log("Course received:", course);
   const [uploading, setUploading] = useState(false);
+
+  const hasCustomBanner =
+    Boolean(course.courseBanner) && course.courseBanner !== "/placeholder.jpg";
+
   const onFileSelected = async (event) => {
     const client = new Client()
       .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
@@ -29,6 +33,11 @@ const CourseBasicInfo = ({
     const file = event.target.files[0];
 
     if (!file) return;
+
+    const isUpdate = hasCustomBanner;
+    const toastId = toast.loading(
+      isUpdate ? "Updating image..." : "Uploading image..."
+    );
 
     try {
       setUploading(true);
@@ -53,10 +62,15 @@ const CourseBasicInfo = ({
       });
 
       refreshData(true);
+      toast.success(isUpdate ? "Image updated" : "Image uploaded", {
+        id: toastId,
+      });
     } catch (error) {
       console.error("Upload error:", error);
+      toast.error("Failed to upload image", { id: toastId });
     } finally {
       setUploading(false);
+      if (event.target) event.target.value = "";
     }
   };
 
@@ -69,21 +83,6 @@ const CourseBasicInfo = ({
   }
   return (
     <>
-      {uploading && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            display: "grid",
-            placeItems: "center",
-            backgroundColor: "#ffffff",
-            zIndex: 9999,
-          }}
-        >
-          <MainLoader />
-        </div>
-      )}
-
       <div className="p-6 md:p-10 rounded-xl border mt-5">
         <div className="grid grid-cols-1 items-center justify-center md:grid-cols-2 gap-8 md:gap-10">
           {/* LEFT CONTENT */}
@@ -128,22 +127,37 @@ const CourseBasicInfo = ({
           {/* RIGHT IMAGE */}
           <div className="w-full order-1 md:order-2">
             {isCreator ? (
-              <label htmlFor="upload-image" className="block cursor-pointer">
+              <label
+                htmlFor="upload-image"
+                className={`group relative block cursor-pointer overflow-hidden rounded-xl transition-all duration-200 hover:shadow-md ${
+                  uploading ? "pointer-events-none opacity-70" : ""
+                }`}
+              >
                 <Image
-                  src={course.courseBanner}
+                  src={course.courseBanner || "/placeholder.jpg"}
                   alt="Course Image"
                   width={600}
                   height={400}
                   className="w-full h-56 object-cover rounded-xl"
                 />
+                <div className="absolute inset-x-0 bottom-0 p-3 flex justify-center opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+                  <span className="inline-flex items-center gap-2 rounded-lg bg-white/95 px-3.5 py-2 text-sm font-medium text-slate-700 shadow-sm backdrop-blur-sm">
+                    {hasCustomBanner ? (
+                      <ImageUp size={16} className="text-[#155DFC]" />
+                    ) : (
+                      <ImagePlus size={16} className="text-[#155DFC]" />
+                    )}
+                    {hasCustomBanner ? "Update image" : "Upload image"}
+                  </span>
+                </div>
               </label>
             ) : (
               <Image
-                src={course.courseBanner}
+                src={course.courseBanner || "/placeholder.jpg"}
                 alt="Course Image"
                 width={600}
                 height={400}
-                className="w-full h-56 object-cover rounded-xl cursor-not-allowed"
+                className="w-full h-56 object-cover rounded-xl border border-slate-200"
               />
             )}
 
@@ -152,6 +166,8 @@ const CourseBasicInfo = ({
                 type="file"
                 id="upload-image"
                 className="hidden"
+                accept="image/*"
+                disabled={uploading}
                 onChange={onFileSelected}
               />
             )}

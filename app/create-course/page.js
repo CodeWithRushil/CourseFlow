@@ -1,13 +1,13 @@
 "use client";
-import React, { act, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import ProfileHeader from "@/components/ProfileHeader";
 import { v4 as uuidv4 } from "uuid";
-import { Stepper, Step, Button, Typography } from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 import Topic from "./_components/Topic";
 import Category from "./_components/Category";
 import Options from "./_components/Options";
 import { UserInputContext } from "../_context/UserInputContext";
-import { generateCourseLayout_AI } from "@/configs/AiModel";
+import { generateCourseLayout as generateCourseLayoutAI } from "@/configs/AiModel";
 import Loading from "./_components/Loading";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
@@ -54,61 +54,24 @@ const CreateCourse = () => {
   };
   const generateCourseLayout = async () => {
     setLoading(true);
-    const finalPrompt = `
-You are a JSON API.  
-Your task is to generate a VALID JSON object only.
+    const chapterCount = Math.max(
+      1,
+      Math.min(12, Number(userCourseInput.chapters) || 5)
+    );
 
-RULES (STRICT):
-- Output ONLY raw JSON
-- No markdown
-- No explanations
-- No comments
-- No trailing commas
-- Keys must be EXACT and CASE-SENSITIVE
-- Do NOT add extra keys
-- Do NOT change key names
-- Do NOT number chapter names
-- Chapter names must be plain text only
-
-JSON STRUCTURE (MUST FOLLOW EXACTLY):
-{
-  "category": string,
-  "topic": string,
-  "level": string,
-  "duration": string,
-  "courseName": string,
-  "description": string,
-  "chapters": [
-    {
-      "chapterName": string,
-      "about": string,
-      "duration": string
-    }
-  ]
-}
-
-INPUT DATA:
-category: ${userCourseInput.category}
-topic: ${userCourseInput.topic}
-level: ${userCourseInput.level}
-duration: ${userCourseInput.duration}
-noOfChapters: ${userCourseInput.chapters}
-
-IMPORTANT:
-- chapters array length MUST equal noOfChapters
-- chapterName must NOT include numbering like "Chapter 1"
-- description must be 3–4 lines
-- about must be 3–4 lines
-`;
-
-    let result;
     let success = false;
     while (!success) {
       try {
-        result = await generateCourseLayout_AI(finalPrompt);
-        // console.log(JSON.parse(result));
+        const courseLayout = await generateCourseLayoutAI({
+          category: userCourseInput.category,
+          topic: userCourseInput.topic,
+          description: userCourseInput.description,
+          level: userCourseInput.level,
+          duration: userCourseInput.duration,
+          chapterCount,
+        });
         console.log("✅ Course Layout Generated");
-        await SaveCourseLayoutInDB(JSON.parse(result));
+        await SaveCourseLayoutInDB(courseLayout);
         console.log("✅ Course Layout Saved in Database");
         success = true;
       } catch (err) {
@@ -311,7 +274,11 @@ IMPORTANT:
         </div>
       </main>
 
-      <Loading loading={loading} mode="layout" />
+      <Loading
+        loading={loading}
+        mode="layout"
+        chapterCount={userCourseInput?.chapters || 3}
+      />
     </div>
   );
 };

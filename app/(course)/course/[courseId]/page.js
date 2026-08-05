@@ -6,8 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import ProfileHeader from "@/components/ProfileHeader";
 import MainLoader from "@/components/MainLoader";
-import { FaRegCopy } from "react-icons/fa";
-import toast from "react-hot-toast";
+import CourseUrlShare from "@/components/CourseUrlShare";
 
 const ViewCourse = ({ params }) => {
   const { user } = useUser();
@@ -60,33 +59,7 @@ const ViewCourse = ({ params }) => {
           />
           <CourseDetail course={course} />
 
-          {/* Course URL */}
-          <h2 className="mt-6 font-semibold text-sm sm:text-base">
-            Course URL:
-          </h2>
-
-          <div className="mt-2 mb-18 sm:mb-24 w-full border rounded-md p-3 flex items-center gap-3 text-gray-500 text-sm sm:text-base justify-between">
-            <span className="break-all whitespace-normal">
-              {process.env.NEXT_PUBLIC_HOST_NAME}/course/{course.courseId}
-            </span>
-
-            <button
-              className="flex-shrink-0 text-[#155DFC]"
-              onClick={async () => {
-                try {
-                  await navigator.clipboard.writeText(
-                    `${process.env.NEXT_PUBLIC_HOST_NAME}/course/${course.courseId}`
-                  );
-                  toast.success("Link Copied");
-                } catch {
-                  toast.error("Failed To Copy");
-                }
-              }}
-            >
-              <FaRegCopy className="text-lg sm:text-xl cursor-pointer hover:scale-105 transition-transform" />
-            </button>
-          </div>
-          
+          <CourseUrlShare courseId={course.courseId} />
 
           <Chapters
             course={course}

@@ -62,7 +62,7 @@ const SideBar = () => {
         transform transition-transform duration-300
         ${open ? "translate-x-0" : "-translate-x-full"} sm:translate-x-0`}
       >
-        <div className="h-full px-3 pb-4 overflow-y-auto">
+        <div className="h-full px-3 pb-4">
           <ul className="space-y-2 font-medium">
             <li>
               <Link

@@ -5,7 +5,7 @@ import CourseBasicInfo from "./_components/CourseBasicInfo";
 import CourseDetail from "./_components/CourseDetail";
 import Chapters from "./_components/Chapters";
 import Loading from "../_components/Loading";
-import { generateChapterContent_AI } from "@/configs/AiModel";
+import { generateChapterContent } from "@/configs/AiModel";
 import youtube from "@/configs/youtube";
 import { useRouter } from "next/navigation";
 import ProfileHeader from "@/components/ProfileHeader";
@@ -38,91 +38,93 @@ const CourseLayout = ({ params }) => {
     if (data.course.published) {
       redirect("/course/" + params.courseId);
     }
-    // console.log("API response:", data);
     if (data.success) {
       setCourse(data.course);
     }
     setLoading(false);
   };
 
-  const generateChapterContent = async () => {
+  const generateChapterContentForCourse = async () => {
     setLoadingAnimation(true);
     const chapters = course.courseOutput.chapters;
+    const chapterCount = chapters.length;
+    const topic = course.courseOutput?.topic || course.name;
+    const courseName = course.courseOutput?.courseName || course.name;
+    const level = course.level || course.courseOutput?.level;
+    const category = course.category || course.courseOutput?.category;
+    const wantVideo = String(course.includeVideo || "Yes").toLowerCase() === "yes";
+
     for (let i = 0; i < chapters.length; i++) {
       const chapter = chapters[i];
+      const chapterName = chapter.chapterName || `Chapter ${i + 1}`;
       let success = false;
-      const PROMPT = `
-You are a JSON API.
-
-Your task is to generate educational content in STRICT JSON format.
-
-RULES (MANDATORY):
-- Output ONLY raw JSON
-- No markdown
-- No \`\`\`
-- No explanations outside JSON
-- No comments
-- No trailing commas
-- Keys must be EXACT and CASE-SENSITIVE
-- Do NOT add extra keys
-- Do NOT rename keys
-
-JSON STRUCTURE (MUST MATCH EXACTLY):
-{
-  "content": [
-    {
-      "title": string,
-      "explanation": string,
-      "code": string
-    }
-  ]
-}
-
-CONTENT RULES:
-- content must be an array with AT LEAST 7 objects
-- explanation must be clear, beginner-friendly, and 3–5 lines
-- code must be relevant to the topic (use plain text, not markdown)
-- If code is not applicable, return an empty string ""
-
-TOPIC DETAILS:
-Course: ${course.name}
-Chapter: ${chapter.chapterName}
-`;
 
       while (!success) {
         try {
-          const result = await generateChapterContent_AI(PROMPT);
-          const chapterContent = JSON.parse(result);
-          console.log(`✅ Chapter ${i + 1} Content Generated`);
-          const rawVideo = await youtube.getVideos(
-            course.name + ":" + chapter.chapterName
-          );
-          console.log(`✅ Video of Chapter ${i + 1} Fetched`);
+          let content;
+          try {
+            content = await generateChapterContent({
+              courseName,
+              topic,
+              level,
+              category,
+              chapterName,
+              about: chapter.about,
+              chapterIndex: i,
+              chapterCount,
+            });
+          } catch (err) {
+            console.warn(
+              `Chapter content failed for "${chapterName}":`,
+              err?.message || err
+            );
+            content = [
+              {
+                title: chapterName,
+                explanation:
+                  chapter.about ||
+                  `Detailed notes for ${chapterName} in the course on ${topic}.`,
+                code: "",
+              },
+            ];
+          }
 
-          await SaveChapterInDB(
-            chapter.chapterName,
-            chapterContent.content,
-            i,
-            rawVideo[0].id.videoId
-          );
+          console.log(`✅ Chapter ${i + 1} Content Generated`);
+
+          let videoId = "";
+          if (wantVideo) {
+            try {
+              const rawVideo = await youtube.getVideos(
+                `${topic}: ${chapterName}`,
+                1
+              );
+              videoId = rawVideo?.[0]?.id?.videoId || "";
+              console.log(`✅ Video of Chapter ${i + 1} Fetched`);
+            } catch (err) {
+              console.warn(
+                `Video search failed for "${chapterName}":`,
+                err?.message || err
+              );
+            }
+          }
+
+          await SaveChapterInDB(chapterName, content, i, videoId);
           success = true;
         } catch (err) {
-          console.error(`⚠️ Error on chapter ${i + 1}`);
+          console.error(`⚠️ Error on chapter ${i + 1}`, err);
         }
       }
     }
     try {
       const updatedCourse = { ...course, published: true };
       setCourse(updatedCourse);
-      const res = await fetch("/api/updateCourseLayout", {
+      await fetch("/api/updateCourseLayout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedCourse),
       });
-      const data = await res.json();
-      // console.log("Updated in Database: ", data);
     } catch (err) {
-      // console.error("Error updating course:", err);
+      // ignore publish errors; content may still be saved
     }
     setLoadingAnimation(false);
     router.replace("/create-course/" + course.courseId + "/finish");
@@ -138,7 +140,7 @@ Chapter: ${chapter.chapterName}
       videoId: videoId,
     };
     try {
-      const res = await fetch("/api/saveChapterContent", {
+      await fetch("/api/saveChapterContent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -173,7 +175,7 @@ Chapter: ${chapter.chapterName}
             <CourseBasicInfo
               course={course}
               refreshData={() => getCourseLayout()}
-              generateChapterContent={generateChapterContent}
+              generateChapterContent={generateChapterContentForCourse}
             />
             <CourseDetail course={course} />
             <Chapters course={course} refreshData={() => getCourseLayout()} />
@@ -181,7 +183,11 @@ Chapter: ${chapter.chapterName}
         ) : (
           <p>No course data found.</p>
         )}
-        <Loading loading={loadingAnimation} mode="content" />
+        <Loading
+          loading={loadingAnimation}
+          mode="content"
+          chapterCount={course?.courseOutput?.chapters?.length || 3}
+        />
       </div>
     </>
   );

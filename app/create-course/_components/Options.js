@@ -45,7 +45,7 @@ const Options = () => {
           <option value="">Select</option>
           <option value="Beginner">Beginner</option>
           <option value="Intermediate">Intermediate</option>
-          <option value="Advance">Advance</option>
+          <option value="Advanced">Advanced</option>
         </select>
       </div>
 
