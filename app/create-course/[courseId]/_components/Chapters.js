@@ -28,24 +28,24 @@ const Chapters = ({ course, refreshData, edit = true }) => {
           </div>
 
           {/* Chapter Content */}
-          <div className="flex flex-col gap-2">
-            <h1 className="font-bold flex gap-2 items-center">
-              {item.chapterName}
-              {edit && (
-                <EditChapter
-                  course={course}
-                  index={index}
-                  refreshData={() => refreshData(true)}
-                />
-              )}
-            </h1>
+          <div className="flex items-start gap-2 flex-1 min-w-0">
+            <div className="flex flex-col gap-2 min-w-0 flex-1">
+              <h1 className="font-bold">{item.chapterName}</h1>
 
-            <p className="text-gray-600 text-sm md:text-base">{item.about}</p>
+              <p className="text-gray-600 text-sm md:text-base">{item.about}</p>
 
-            <div className="font-semibold text-[#155DFC] flex gap-1 items-center text-sm">
-              <LuClock4 className="text-[#155DFC] text-base" />
-              {item.duration}
+              <div className="font-semibold text-[#155DFC] flex gap-1 items-center text-sm">
+                <LuClock4 className="text-[#155DFC] text-base shrink-0" />
+                {item.duration}
+              </div>
             </div>
+            {edit && (
+              <EditChapter
+                course={course}
+                index={index}
+                refreshData={() => refreshData(true)}
+              />
+            )}
           </div>
         </div>
       ))}

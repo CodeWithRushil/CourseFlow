@@ -36,10 +36,8 @@ const EditCourseInfo = ({ course, refreshData }) => {
   };
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
-        <h3 className="text-blue-700 text-lg cursor-pointer">
-          <BiSolidEdit className="text-blue-700 text-2xl sm:text-3xl" />
-        </h3>
+      <AlertDialogTrigger className="shrink-0 mt-0.5 cursor-pointer">
+        <BiSolidEdit className="text-blue-700 text-2xl sm:text-3xl" />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

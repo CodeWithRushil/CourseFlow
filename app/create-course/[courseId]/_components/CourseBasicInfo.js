@@ -87,19 +87,23 @@ const CourseBasicInfo = ({
         <div className="grid grid-cols-1 items-center justify-center md:grid-cols-2 gap-8 md:gap-10">
           {/* LEFT CONTENT */}
           <div className="flex flex-col gap-4 order-2 md:order-1">
-            <h2 className="flex items-center gap-2 font-bold text-xl md:text-2xl">
-              {course.courseOutput.courseName}
+            <div className="flex items-start gap-2">
+              <div className="flex flex-col gap-4 min-w-0 flex-1">
+                <h2 className="font-bold text-xl md:text-2xl">
+                  {course.courseOutput.courseName}
+                </h2>
+
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {course.courseOutput.description}
+                </p>
+              </div>
               {edit && (
                 <EditCourseInfo
                   course={course}
                   refreshData={() => refreshData(true)}
                 />
               )}
-            </h2>
-
-            <p className="text-sm text-gray-500 leading-relaxed">
-              {course.courseOutput.description}
-            </p>
+            </div>
 
             <div className="flex items-center gap-2 text-[#155DFC] font-semibold">
               <MdOutlineCategory className="text-xl" />

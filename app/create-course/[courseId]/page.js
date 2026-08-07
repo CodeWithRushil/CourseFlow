@@ -53,6 +53,7 @@ const CourseLayout = ({ params }) => {
     const level = course.level || course.courseOutput?.level;
     const category = course.category || course.courseOutput?.category;
     const wantVideo = String(course.includeVideo || "Yes").toLowerCase() === "yes";
+    const usedVideoIds = new Set();
 
     for (let i = 0; i < chapters.length; i++) {
       const chapter = chapters[i];
@@ -94,11 +95,11 @@ const CourseLayout = ({ params }) => {
           let videoId = "";
           if (wantVideo) {
             try {
-              const rawVideo = await youtube.getVideos(
+              videoId = await youtube.findUniqueVideo(
                 `${topic}: ${chapterName}`,
-                1
+                usedVideoIds
               );
-              videoId = rawVideo?.[0]?.id?.videoId || "";
+              if (videoId) usedVideoIds.add(videoId);
               console.log(`✅ Video of Chapter ${i + 1} Fetched`);
             } catch (err) {
               console.warn(

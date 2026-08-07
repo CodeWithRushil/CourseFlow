@@ -364,7 +364,7 @@ const StartCourse = ({ params }) => {
       </aside>
 
       {/* Main content — extra top padding on mobile for nav + chapter picker */}
-      <main className="pt-[126px] md:pt-[57px] md:ml-80 min-h-screen bg-[#f3f4f6]">
+      <main className="pt-[126px] md:pt-[57px] md:ml-80 min-h-[100dvh] bg-[#f3f4f6]">
         <div className="px-3 sm:px-4 md:px-8 pb-8">
           <ChapterContent
             chapter={selectedChapter}

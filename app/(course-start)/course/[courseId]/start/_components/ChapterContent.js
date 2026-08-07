@@ -68,11 +68,13 @@ const ChapterContent = ({
 
   return (
     <div className="px-1 sm:px-4 md:px-9 py-5 sm:py-7 max-w-[920px] mx-auto">
-      <div className="mb-4 sm:mb-5">
-        <p className="m-0 mb-2 text-[11px] sm:text-xs font-bold tracking-wider uppercase text-[#155DFC]">
+      <div
+        className={`${chapter?.about ? "mb-4 sm:mb-5" : "mb-0 md:mb-5"}`}
+      >
+        <p className="hidden md:block m-0 mb-2 text-xs font-bold tracking-wider uppercase text-[#155DFC]">
           Chapter {chapterIndex + 1} of {chapterCount}
         </p>
-        <h2 className="font-bold text-xl sm:text-2xl md:text-[28px] text-[#1c1d1f] tracking-tight leading-snug mb-2">
+        <h2 className="hidden md:block font-bold text-[28px] text-[#1c1d1f] tracking-tight leading-snug mb-2">
           {chapter?.chapterName}
         </h2>
         {chapter?.about ? (
