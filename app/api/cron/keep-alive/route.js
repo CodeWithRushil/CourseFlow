@@ -16,8 +16,13 @@ function isAuthorized(request) {
 
 async function pingMongo() {
   await connectDB();
-  // Lightweight query to keep Atlas free-tier warm
-  await CourseLayout.findOne().select("_id").lean();
+  const mongoose = require("mongoose");
+  await mongoose.connection.db.collection('keep_alive_pings').updateOne(
+    { _id: "ping" },
+    { $set: { lastPing: new Date() } },
+    { upsert: true }
+  );
+  
   return { ok: true };
 }
 
@@ -35,35 +40,48 @@ async function pingAppwrite() {
     "Content-Type": "application/json",
   };
 
-  // Prefer storage list (touches the project) — fall back to health
-  const targets = [];
+  const requests = [];
+  
   if (bucketId) {
-    targets.push(
-      `${endpoint.replace(/\/$/, "")}/storage/buckets/${bucketId}/files?limit=1`
-    );
+    requests.push({
+      url: `${endpoint.replace(/\/$/, "")}/storage/buckets/${bucketId}/files?limit=1`,
+      method: "GET"
+    });
+    
+    requests.push({
+      url: `${endpoint.replace(/\/$/, "")}/storage/buckets/${bucketId}/files`,
+      method: "POST",
+      body: JSON.stringify({ fileId: "keep-alive", permissions: [] })
+    });
   }
-  targets.push(`${endpoint.replace(/\/$/, "")}/health`);
-  targets.push(`${endpoint.replace(/\/$/, "")}/health/version`);
+  
+  requests.push({
+    url: `${endpoint.replace(/\/$/, "")}/health`,
+    method: "GET"
+  });
 
   let lastError = null;
-  for (const url of targets) {
+  for (const req of requests) {
     try {
-      const res = await fetch(url, {
-        method: "GET",
+      const res = await fetch(req.url, {
+        method: req.method,
         headers,
+        body: req.body,
         cache: "no-store",
       });
-      // 401/403 still means the project responded (not paused)
-      if (res.ok || [401, 403, 404].includes(res.status)) {
-        return { ok: true, status: res.status, url };
+      if (res.ok || [401, 403, 404, 400].includes(res.status)) {
+        if (req.method === "POST") {
+          return { ok: true, status: res.status, url: req.url, method: "POST" };
+        }
+      } else {
+        lastError = `HTTP ${res.status}`;
       }
-      lastError = `HTTP ${res.status}`;
     } catch (err) {
       lastError = err?.message || String(err);
     }
   }
 
-  return { ok: false, error: lastError };
+  return { ok: lastError === null, error: lastError };
 }
 
 export async function GET(request) {
