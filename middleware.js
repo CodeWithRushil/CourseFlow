@@ -7,7 +7,12 @@ const isProtectedRoute = createRouteMatcher([
   "/api(.*)",
 ]);
 
+const isPublicRoute = createRouteMatcher([
+  "/api/cron/keep-alive(.*)",
+]);
+
 export default clerkMiddleware(async (auth, req) => {
+  if (isPublicRoute(req)) return; // Bypass protection for public routes
   if (isProtectedRoute(req)) await auth.protect();
 });
 
